@@ -1,0 +1,16 @@
+*,::before,
+::after{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font:600 50%;
+    font-family: sans-serif;
+    background-color: black ;
+    color: white;
+}
