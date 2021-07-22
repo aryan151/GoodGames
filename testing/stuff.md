@@ -1,6 +1,8 @@
 discover page => home page?
 
-
+ <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange"> Value
+    </div>
 
 
 Adv Search:
