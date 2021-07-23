@@ -105,7 +105,8 @@ a.tag:hover {
     border: 0;
     border-radius: inherit;
     background-color: #17141d;
-    color: white;
+    color: #ff8a00;
+    font-family: 'Courier New', Courier, monospace ;
     transition: width 250ms ease-in-out;
 }
 
@@ -124,7 +125,7 @@ a.tag:hover {
 }
 
 .container label:hover .tag-search {
-    width: 100%;
+    width: 200%;
     padding-right: 1em;
     padding-left: 1em;
 }
