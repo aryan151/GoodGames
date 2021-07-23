@@ -51,7 +51,7 @@ a.tag:hover {
     color: #a1a1af;
     border: 1px solid black;
     border-radius: 0.35em;
-    box-shadow: 0 10px 60px red;
+    box-shadow: 0 10px 60px rgb(0, 0, 0);
 }
 
 .container .tags {
@@ -72,7 +72,7 @@ a.tag:hover {
     border: 3px solid transparent;
     border-radius: 2em;
     background-color: #17141d;
-    background-image: radial-gradient(circle at 50%, #ff8a00, #da1b60);
+    background-image: radial-gradient(circle at 50%, #ff8a00, #1e0070);
     transition: all 250ms ease-in-out;
 }
 
@@ -87,7 +87,7 @@ a.tag:hover {
     height: 25px;
     content: "";
     border-radius: 2px;
-    background-image: linear-gradient(to top, #ff8a00, #da1b60);
+    background-image: linear-gradient(to top, #ff8a00, #1e0070);
     transition: all 250ms ease-in-out;
 
 }
