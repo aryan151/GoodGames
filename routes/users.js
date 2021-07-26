@@ -41,4 +41,42 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
     res.redirect('/');
 }));
 
+router.get('/login', csrfProtection, asyncHandler(async (req, res) => {
+    const user = User.build();
+
+    res.render('login', { title: 'Login', user, csrfToken: req.csrfToken() })
+}));
+
+router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
+    const {email, password } = req.body;
+
+
+    const validationErrors = validationResult(req)
+
+    let errors = []
+
+    if (validationErrors.isEmpty()) {
+
+        const user = await User.findOne({where:{email}})
+
+        if(user){
+            const hashedPassword = user.hashedPassword
+
+            let isPassword = await bcrypt.compare(password,hashedPassword)
+
+            if(isPassword){
+                //TODO LOGIN THE USER
+                res.redirect('/')
+                return
+            }
+        }
+        errors.push('there was an error with the provided email and password')
+    }else{
+        errors = validationErrors.array().map(error => error.msg);
+    }
+
+    console.log(errors)
+    res.render('login', { title: 'Login', email, csrfToken: req.csrfToken(), errors })
+}));
+
 module.exports = router;
