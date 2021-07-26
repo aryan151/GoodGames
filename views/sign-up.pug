@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1 Hello
+    form(action="/signup", method="post")
+        input(type="hidden", name="_csrf", value=csrfToken)
+
+
+        label(for="username") Username
+        input(type="text", name="username", id="username", value=user.username)
+        label(for="email") Email
+        input(type="text", name="email", id="email", value=user.email)
+        label(for="password") password
+        input(type="text", name="password", id="password")
+        label(for="confirmPassword") confirm password
+        input(type="text", name="confirmPassword", id="confirmPassword")
+        button(type="submit") Submit
