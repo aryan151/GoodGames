@@ -11,20 +11,22 @@ User Auth
 
 
 - back end
-    - database model + migration
-        - users
-            - seed 5 users (one is demo)
-    - auth
-        - log in
-        - restore user
-        - require auth (protect route)
-    - validations
-    - utils (general)
+    - database model + migrationDONE
+        - usersDONE
+            - seed 5 users (one is demo)DONE
+    - authDONE
+        - log inDONE
+        - restore userDONE
+        - require auth (protect route)DONE
+    - user validationsDONE
+        - sign up DONE
+        - login   DONE
+    - utils (general)DONE
     - route handlers (users)
-        - /login
-        - /signup
-        - /logout
+        - /loginDONE
+        - /signupDONE
+        - /logoutDONE
         - /demo
 
-- set up github repo for pull requests
-- .env file
+- set up github repo for pull requestsDONE
+- .env fileDONE
