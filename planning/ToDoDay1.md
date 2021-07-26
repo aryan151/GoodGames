@@ -27,3 +27,4 @@ User Auth
         - /demo
 
 - set up github repo for pull requests
+- .env file
