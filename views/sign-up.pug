@@ -1,16 +1,27 @@
 extends layout
 
 block content
-    form(action="/signup", method="post")
-        input(type="hidden", name="_csrf", value=csrfToken)
-
-
-        label(for="username") Username
-        input(type="text", name="username", id="username", value=user.username)
-        label(for="email") Email
-        input(type="text", name="email", id="email", value=user.email)
-        label(for="password") password
-        input(type="text", name="password", id="password")
-        label(for="confirmPassword") confirm password
-        input(type="text", name="confirmPassword", id="confirmPassword")
-        button(type="submit") Submit
+    link(rel='stylesheet' href = '/stylesheets/form.css')
+    div.form-container
+        form(action="/signup", method="post")
+                h2 Log In
+                input(type="hidden", name="_csrf", value=csrfToken)
+                .form-group
+                    label(for="username") Username
+                    input.form-control(type="text", name="username", id="username", value=user.username placeholder = 'Enter Username')
+                .form-group
+                    label(for="email") Email
+                    input.form-control(type= "text", id = 'email', name = 'email' placeholder ='Enter Email')
+                .form-group
+                    label(for="password") Password
+                    input.form-control(type= "password", id = 'password', name = 'password' placeholder = 'Enter Password')
+                .form-group
+                    label(for="confirmPassword") Confirm Password
+                    input.form-control(type="password", name="confirmPassword", id="confirmPassword" placeholder = 'Confirm Password')
+                    input.form-button(type="submit" value='Sign Up')
+        if errors
+            .form-group.error
+                p The following error(s) occurred:
+                ul
+                    each error in errors
+                        li= error
