@@ -11,6 +11,7 @@ User Auth
 
 
 - back end
+
     - database model + migration DONE
         - users DONE
             - seed 5 users (one is demo) DONE
