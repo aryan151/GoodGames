@@ -5,6 +5,7 @@ const { validationResult } = require('express-validator');
 const { asyncHandler, csrfProtection } = require('./utils');
 const { User } = require('../db/models');
 const { loginValidators, userValidators } = require('./validators');
+const { loginUser, logoutUser } = require('../auth');
 
 const router = express.Router();
 
@@ -37,6 +38,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
     await user.save();
 
     // TODO LOGIN THE USER
+    loginUser(req, res, user);
 
     res.redirect('/');
 }));
@@ -47,7 +49,7 @@ router.get('/login', csrfProtection, asyncHandler(async (req, res) => {
     res.render('login', { title: 'Login', user, csrfToken: req.csrfToken() })
 }));
 
-router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
+router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
     const {email, password } = req.body;
 
 
@@ -66,8 +68,8 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
 
             if(isPassword){
                 //TODO LOGIN THE USER
-                res.redirect('/')
-                return
+                loginUser(req, res, user)
+                return res.redirect('/');
             }
         }
         errors.push('there was an error with the provided email and password')
@@ -78,5 +80,11 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
     console.log(errors)
     res.render('login', { title: 'Login', email, csrfToken: req.csrfToken(), errors })
 }));
+
+
+router.post('/logout', (req, res) => {
+    logoutUser(req, res);
+    res.redirect('/');
+})
 
 module.exports = router;
