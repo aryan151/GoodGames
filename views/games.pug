@@ -1,0 +1,8 @@
+extends layout.pug
+
+
+block content
+    for game in games
+        a(href=`/games/${game.id}`) #{game.title}
+        p= game.description
+        p= game.releaseDate
