@@ -1,0 +1,18 @@
+extends layout.pug
+
+append head
+   link(rel="stylesheet" href="/public/stylesheets/review.css")
+
+block content
+   div(id="reviews-container")
+      h1 Reviews
+      each review in reviews
+         div(id="user-review-container")
+            div(id= "review-title-container")
+               a(href= `/games/${review.Game.id}`)= review.Game.name
+               div(id= "review-score")= review.score
+            div(id= "review-game-name")= "\"" + review.title + "\""
+            div(id= "review-description-container")
+               div(id= "review-description")= review.description
+      div(id="scroll-top")
+         a(href= "#top") Top
