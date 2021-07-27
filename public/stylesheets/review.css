@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+body{
+    background-color: #060919;
+    min-height: 100vh;
+    font-family:"Roboto Condensed", Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    margin:30px;
+    align-items:center;
+    text-align: justify;
+}
+
+/* .review{
+    margin:50px;
+    padding: 20px;
+    min-height: 100px;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 5px;
+} */
+
+.review-content{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(32, 30, 30);
+    line-height: 19px;
+}
+.review-buttons{
+    display: flex;
+    justify-content: flex-end;
+}
+/* .review-buttons button{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    padding: 2px 5px;
+    height: 40px;
+    color: #fff;
+    border:none;
+    outline: none;
+    min-width: 50px;
+    background-color: #a44200;
+    font-size: 14px;
+    border-radius: 10px;
+    text-justify: center;
+  } */
+
+  .content-header{
+      margin-top:30px;
+  }
+
+  /* .card h3{
+      font-style: italic;
+  } */
+
+
+  #top-link{
+      text-align: center;
+  }
+  #scroll-top{
+      margin-top: 15px;
+  }
+  #scroll-top > a:hover{
+      color: rgb(240, 59, 194);
+  }

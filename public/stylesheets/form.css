@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
-
+h2{
+  color:black
+}
 body{
   display: flex;
   flex-direction: column;
@@ -58,7 +60,7 @@ form{
     margin:5%;
   }
 
-/* give inputs ,form-control class*/
+/* give inputs .form-control class*/
   .form-control{
     margin:2px 0px 20px;
     border:none;
