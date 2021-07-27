@@ -114,4 +114,12 @@ router.post('/logout', (req, res) => {
     res.redirect('/');
 })
 
+router.post('/demo', asyncHandler(async (req, res, next)=>{
+    let demoUser = await User.findByPk(1)
+
+    loginUser(req,res,demoUser)
+
+    res.redirect('/')
+}))
+
 module.exports = router;
