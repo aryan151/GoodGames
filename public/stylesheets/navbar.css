@@ -1,11 +1,15 @@
 *, *::before, *::after {
     box-sizing: inherit;
 }
-#navbar-container {
+header{
     height: 50px;
     background: linear-gradient(to right, #101842, #a44200);
     border-style:hidden;
+    align-self: flex-start;
+    display:flex;
+    width: 100%
  }
+
 
 a {
     color: #ffffff;
@@ -15,19 +19,29 @@ a {
     justify-content: center;
 }
 
-div {
+#navbar-container, button-container {
     padding: 10px;
 }
 
 a:hover {
     color: #101842;
 }
+#navbar-container{
+    display:flex
+}
 
-div.navbar {
+#button-container{
+    display:flex;
+    align-items: center
+}
+/* div.navbar {
     display: flex;
     justify-content: space-between;
-}
-div > ul {
+} */
+
+
+
+.navlist {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
@@ -36,9 +50,8 @@ div > ul {
     align-items: center;
     position: absolute;
     right: 150px;
-
 }
-div > form {
-    position: absolute;
-    right: 1000px;
+.navbar {
+    /* position: absolute;
+    right: 1000px; */
 }

@@ -7,31 +7,32 @@ html
             link(rel='stylesheet' href='/stylesheets/navbar.css')
             script(src="/javascripts/navbar.js" type="module" defer)
     body
-        div(id='navbar-container' class='navbar')
-            div(id='button-container')
-                span(class='navbar-button')
-                a(href="/", method="post") Home
-                form#form
-                    input#query(type='search', name='searchbar', placeholder='Find your Game!')
-                    input.form-button(type="submit" value='searchbar')
-                if locals.authenticated
-                      ul
-                        li
-                            a(href="/reviews") My Reviews
-                        li
-                            a(href="/shelves") My Shelves
-                        li
-                            a(href="/logout" id="logout") Logout
-                        li
-                            a(href="/about") About
-                else
-                      ul
-                        li
-                            a(href="/login") Login
-                        li
-                            a(href="/signup") Sign Up
-                        li
-                            a(href="demo") Demo
-                        li
-                            a(href="/about") About
+        header
+            div(id='navbar-container' class='navbar')
+                div(id='button-container')
+                    span(class='navbar-button')
+                    a(href="/", method="post") Home
+                    form#form
+                        input#query(type='search', name='searchbar', placeholder='Find your Game!')
+                        input.form-button(type="submit" value='searchbar')
+                    if locals.authenticated
+                        ul.navlist
+                            li
+                                a(href="/reviews") My Reviews
+                            li
+                                a(href="/shelves") My Shelves
+                            li
+                                a(href="/logout" id="logout") Logout
+                            li
+                                a(href="/about") About
+                    else
+                        ul.navlist
+                            li
+                                a(href="/login") Login
+                            li
+                                a(href="/signup") Sign Up
+                            li
+                                a(href="demo") Demo
+                            li
+                                a(href="/about") About
         block content
