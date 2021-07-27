@@ -98,6 +98,12 @@ const reviewValidators = [
         }),
 ];
 
+const reviewEditValidators = [
+    check('content')
+        .exists({checkFalsy: true})
+        .withMessage('Please fill in review')
+]
+
 const jsonValidationHandler = (req, res, next) => {
     const validationErrors = validationResult(req);
 
@@ -124,4 +130,5 @@ module.exports = {
     userValidators,
     reviewValidators,
     jsonValidationHandler,
+    reviewEditValidators,
 }
