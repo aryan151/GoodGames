@@ -6,4 +6,8 @@ router.get('/', function (req, res, next) {
     res.render('index', { title: 'a/A Express Skeleton Home' });
 });
 
+router.get('/about', (req, res) => {
+    res.render('about', {title: 'About'})
+})
+
 module.exports = router;
