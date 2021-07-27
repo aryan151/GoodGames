@@ -120,6 +120,7 @@ const jsonValidationHandler = (req, res, next) => {
             errors: err.errors,
             stack: err.stack
         })
+        return;
     }
     next();
 }
