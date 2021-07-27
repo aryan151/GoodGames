@@ -2,11 +2,26 @@ doctype html
 html
     head
         block head
-            title="Express Starter App"
+            title="GoodGames"
             link(rel='stylesheet' href='/stylesheets/reset.css')
+            link(rel='stylesheet' href='/stylesheets/navbar.css')
     body
-        if locals.authenticated
-            p hello #{user.username}
-            form(action="/logout", method="post")
-                button(type="submit") Logout
+        div(id='navbar-container' class='navbar')
+            div(id='button-container')
+                span(class='navbar-button')
+                a(href="/", method="post") Home
+                if locals.authenticated
+                      ul
+                        li
+                            a(href="/logout", method="post") Logout
+                        li
+                            a(href="/about", method="post") About
+                else
+                      ul
+                        li
+                            a(href="/login", method="post") Login
+                        li
+                            a(href="/sign-up", method="post") Sign Up
+                        li
+                            a(href="/about", method="post") About
         block content
