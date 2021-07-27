@@ -1,11 +1,16 @@
 extends layout
 
 append head
-  //- add page specific styles by appending to the head
-    link(rel="stylesheet" href="/stylesheets/index.css")
-  //- add page specific js
-    script(src="/javascripts/index.js" type="module" defer)
+    link(rel='stylesheet' href='/stylesheets/index.css')
+    script(src="/javascripts/index.js" type="module")
 
 block content
     h1= title
-    p Welcome to your Project Skeleton
+    each game in games
+        .card.center
+            img(src=game.imageURL, alt=`Box art for ${game.title}`)
+            div.inner-container
+                h2.card-title= game.title
+                p= game.description
+                form(action="/api/shelves", method="post")
+                    button.btn.btn-primary.add-to-shelf(type="submit") add to my shelf
