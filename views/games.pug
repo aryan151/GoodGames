@@ -3,7 +3,7 @@ extends layout.pug
 
 block content
     for game in games
-        a(href=`/games/${game.id}`) #{game.title}
+        h2: a(href=`/games/${game.id}`) #{game.title}
         p= game.description
         p= game.releaseDate
         img(src=game.imageURL, alt=`Cover Art for ${game.title}`)

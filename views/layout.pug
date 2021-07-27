@@ -5,6 +5,7 @@ html
             title="GoodGames"
             link(rel='stylesheet' href='/stylesheets/reset.css')
             link(rel='stylesheet' href='/stylesheets/navbar.css')
+            script(src="/javascripts/navbar.js" type="module" defer)
     body
         header
             div(id='navbar-container' class='navbar')
@@ -17,21 +18,21 @@ html
                     if locals.authenticated
                         ul.navlist
                             li
-                                a(href="/reviews", method="post") My Reviews
+                                a(href="/reviews") My Reviews
                             li
-                                a(href="/shelves", method="post") My Shelves
+                                a(href="/shelves") My Shelves
                             li
-                                a(href="/logout", method="post") Logout
+                                a(href="/logout" id="logout") Logout
                             li
-                                a(href="/about", method="post") About
+                                a(href="/about") About
                     else
                         ul.navlist
                             li
-                                a(href="/login", method="post") Login
+                                a(href="/login") Login
                             li
-                                a(href="/signup", method="post") Sign Up
+                                a(href="/signup") Sign Up
                             li
-                                a(href="demo", method="post") Demo
+                                a(href="demo") Demo
                             li
-                                a(href="/about", method="post") About
+                                a(href="/about") About
         block content

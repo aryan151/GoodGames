@@ -1,5 +1,8 @@
-const { check } = require('express-validator');
-const { User } = require('../db/models');
+const { check, validationResult } = require('express-validator');
+const { User, Review, Game } = require('../db/models');
+const { Op } = require("sequelize");
+
+
 
 
 const userValidators = [
@@ -55,13 +58,78 @@ const loginValidators = [
 
 const reviewValidators = [
     check('content')
+        .exists({ checkFalsy: true })
+        .withMessage('Please content for your review'),
+    check('rating')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a rating')
+        .isInt({ min: 1, max: 5 })
+        .withMessage('Please provide a rating value between 1 and 5'),
+    check('userId')
+        .exists({ checkFalsy: true })
+        .withMessage('Must provide userId for this request')
+        .custom(value => {
+            return User.findByPk(value)
+                .then(user => {
+                    if (!user) {
+                        return Promise.reject(`User does not exist. userId provided: ${value}`)
+                    }
+                })
+        })
+        .custom((value, { req }) => {
+            return Review.findOne({
+                where: {
+                    [Op.and]: [{ userId: value }, { gameId: req.params.gameId }]
+                }
+            })
+                .then(review => {
+                    if (review) {
+                        return Promise.reject('You already have a review for this game');
+                    }
+                })
+        })
+        .custom((value, {req}) => {
+            return Game.findByPk(Number(req.params.gameId))
+                .then(game => {
+                    if (!game) {
+                        return Promise.reject(`Game does not exist. gameId provided through path: ${req.params.gameId}`)
+                    }
+                })
+        }),
+];
+
+const reviewEditValidators = [
+    check('content')
         .exists({checkFalsy: true})
         .withMessage('Please fill in review')
 ]
+
+const jsonValidationHandler = (req, res, next) => {
+    const validationErrors = validationResult(req);
+
+    if (!validationErrors.isEmpty()){
+        const errors = validationErrors.array().map(error => error.msg);
+        const err = Error('Bad Request');
+        err.errors = errors;
+        err.status = 400;
+        res.status = 400;
+        err.title = 'Bad Request'
+        res.json({
+            title: err.title,
+            message: err.message,
+            errors: err.errors,
+            stack: err.stack
+        })
+        return;
+    }
+    next();
+}
 
 
 module.exports = {
     loginValidators,
     userValidators,
-    reviewValidators
+    reviewValidators,
+    jsonValidationHandler,
+    reviewEditValidators,
 }
