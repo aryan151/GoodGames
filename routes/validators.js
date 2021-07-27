@@ -53,6 +53,10 @@ const loginValidators = [
         .withMessage('Please provide a password')
 ];
 
+const reviewValidators = [
+    checkl('review')
+]
+
 
 module.exports = {
     loginValidators,
