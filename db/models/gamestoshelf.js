@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
     GamesToShelf.associate = function (models) {
         // associations can be defined here
-        GamesToShelf.hasMany(models.Game, { foreignKey: 'gameId'})
+        GamesToShelf.belongsTo(models.Game, { foreignKey: 'gameId'})
         GamesToShelf.belongsTo(models.UserShelf, { foreignKey: 'userShelfId' })
     };
     return GamesToShelf;
