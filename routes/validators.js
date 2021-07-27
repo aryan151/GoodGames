@@ -65,37 +65,37 @@ const reviewValidators = [
         .withMessage('Please provide a rating')
         .isInt({ min: 1, max: 5 })
         .withMessage('Please provide a rating value between 1 and 5'),
-    check('userId')
-        .exists({ checkFalsy: true })
-        .withMessage('Must provide userId for this request')
-        .custom(value => {
-            return User.findByPk(value)
-                .then(user => {
-                    if (!user) {
-                        return Promise.reject(`User does not exist. userId provided: ${value}`)
-                    }
-                })
-        })
-        .custom((value, { req }) => {
-            return Review.findOne({
-                where: {
-                    [Op.and]: [{ userId: value }, { gameId: req.params.gameId }]
-                }
-            })
-                .then(review => {
-                    if (review) {
-                        return Promise.reject('You already have a review for this game');
-                    }
-                })
-        })
-        .custom((value, {req}) => {
-            return Game.findByPk(Number(req.params.gameId))
-                .then(game => {
-                    if (!game) {
-                        return Promise.reject(`Game does not exist. gameId provided through path: ${req.params.gameId}`)
-                    }
-                })
-        }),
+    // check('userId')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Must provide userId for this request')
+    //     .custom(value => {
+    //         return User.findByPk(value)
+    //             .then(user => {
+    //                 if (!user) {
+    //                     return Promise.reject(`User does not exist. userId provided: ${value}`)
+    //                 }
+    //             })
+    //     })
+    //     .custom((value, { req }) => {
+    //         return Review.findOne({
+    //             where: {
+    //                 [Op.and]: [{ userId: value }, { gameId: req.params.gameId }]
+    //             }
+    //         })
+    //             .then(review => {
+    //                 if (review) {
+    //                     return Promise.reject('You already have a review for this game');
+    //                 }
+    //             })
+    //     })
+    //     .custom((value, {req}) => {
+    //         return Game.findByPk(Number(req.params.gameId))
+    //             .then(game => {
+    //                 if (!game) {
+    //                     return Promise.reject(`Game does not exist. gameId provided through path: ${req.params.gameId}`)
+    //                 }
+    //             })
+    //     }),
 ];
 
 const reviewEditValidators = [

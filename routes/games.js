@@ -29,8 +29,9 @@ router.post('/api/games/:gameId(\\d+)/reviews', reviewValidators, jsonValidation
     // this route will only be hit by our front end javascript file
     // will create a new review and return the new review
     console.log('hit this route')
+    const userId = res.locals.user.id
 
-    const { content, rating, userId } = req.body;
+    const { content, rating } = req.body;
     const gameId = req.params.gameId;
     const review = await Review.create({
         content,
