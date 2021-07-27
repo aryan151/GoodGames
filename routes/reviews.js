@@ -2,7 +2,7 @@ const express = require('express');
 
 const { asyncHandler , csrfProtection} = require('./utils');
 const { Game, Review, User ,} = require('../db/models');
-const {reviewValidators} = require('./validators')
+const {reviewEditValidators} = require('./validators')
 const { validationResult } = require('express-validator');
 
 
@@ -34,7 +34,7 @@ router.get('/reviews/:id(\\d+)', asyncHandler(async (req,res,next)=>{
     res.render('review-edit', {title: 'Edit Review',review,content})
 }))
 
-router.post('/reviews/:id(\\d+)/edit', reviewValidators,asyncHandler(async (req,res,next)=>{
+router.post('/reviews/:id(\\d+)/edit', reviewEditValidators ,asyncHandler(async (req,res,next)=>{
     const id = req.params.id
     const {content} = req.body
     let review = await Review.findByPk(id)
