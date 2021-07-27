@@ -1,6 +1,7 @@
 const express = require('express');
 
 const { asyncHandler , csrfProtection} = require('./utils');
+const { requireAuth } = require('../auth');
 const { Game, Review, User ,} = require('../db/models');
 const {reviewEditValidators} = require('./validators')
 const { validationResult } = require('express-validator');
@@ -8,7 +9,7 @@ const { validationResult } = require('express-validator');
 
 const router = express.Router();
 
-router.get('/reviews', asyncHandler(async (req,res,next)=>{
+router.get('/reviews', requireAuth, asyncHandler(async (req,res,next)=>{
     const {userId} = req.session.auth
 
     let reviews = await Review.findAll({
