@@ -30,10 +30,6 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.DATE
             },
-            rating: {
-                allowNull: false,
-                type: Sequelize.INTEGER,
-            }
         });
     },
     down: (queryInterface, Sequelize) => {
