@@ -1,10 +1,23 @@
 extends layout.pug
 
 block content
-     form(action="/login", method="post")
-        input(type="hidden", name="_csrf", value=csrfToken)
-        label(for="email") Email
-        input(type="text", name="email", id="email", value=email)
-        label(for="password") password
-        input(type="text", name="password", id="password")
-        button(type="submit") Submit
+    link(rel='stylesheet' href = '/stylesheets/form.css')
+    div.form-container
+        form(action="/login", method="post")
+            h2 Log In
+            input(type="hidden", name="_csrf", value=csrfToken)
+            .form-group
+                label(for="email") Email
+                input.form-control(type= "text", id = 'email', name = 'email' placeholder ='Enter Email' value = user.email)
+            .form-group.end
+                label(for="password") Password
+                input.form-control(type= "password", id = 'password', name = 'password' placeholder = 'Enter Password')
+                input.form-button(type="submit" value='Log In')
+        a.form-group(href = '/signup')
+            button.form-button(type: "button") Sign Up
+        if errors
+            .form-group.errors
+                p The following error(s) occurred:
+                ul
+                    each error in errors
+                        li= error
