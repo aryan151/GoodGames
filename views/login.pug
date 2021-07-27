@@ -18,9 +18,9 @@ block content
         .form-group#demo-container
             button.form-button(type: "button") Demo
         if errors
-            .form-group.errors
+            .form-group.error
                 p The following error(s) occurred:
-                ul
+                ul.error
                     each error in errors
                         li= error
     script(src="/javascripts/demo-button.js" type="module" defer)
