@@ -2,6 +2,8 @@ const express = require('express');
 
 const { asyncHandler , csrfProtection} = require('./utils');
 const { Game, Review, User ,} = require('../db/models');
+const {reviewValidators} = require('./validators')
+const { validationResult } = require('express-validator');
 
 
 const router = express.Router();
@@ -29,15 +31,35 @@ router.get('/reviews/:id(\\d+)', asyncHandler(async (req,res,next)=>{
             {model: User}
         ]
     })
-    res.render('review-edit', {title: 'Edit Review',review})
+    res.render('review-edit', {title: 'Edit Review',review,content})
 }))
 
-router.post('/reviews/:id(\\d+)/edit', asyncHandler(async (req,res,next)=>{
+router.post('/reviews/:id(\\d+)/edit', reviewValidators,asyncHandler(async (req,res,next)=>{
     const id = req.params.id
     const {content} = req.body
     let review = await Review.findByPk(id)
-    
 
+    const validationErrors = validationResult(req)
+
+    if (!validationErrors.isEmpty()) {
+        const errors = validationErrors.array().map(error => error.msg);
+        console.log(errors)
+        // res.render('review-edit', { title: 'Edit Review', review,  errors })
+        return;
+    }
+
+    review.content = content
+
+    review.save()
+}))
+
+router.post('/reviews/:id(\\d+)/delete', asyncHandler(async (req,res,next)=>{
+    const id = req.params.id
+    let review = await Review.findByPk(id)
+
+    await review.destroy()
+
+    res.redirect('/reviews')
 }))
 
 module.exports = router

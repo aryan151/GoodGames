@@ -54,11 +54,14 @@ const loginValidators = [
 ];
 
 const reviewValidators = [
-    checkl('review')
+    check('content')
+        .exists({checkFalsy: true})
+        .withMessage('Please fill in review')
 ]
 
 
 module.exports = {
     loginValidators,
-    userValidators
+    userValidators,
+    reviewValidators
 }
