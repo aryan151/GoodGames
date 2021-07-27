@@ -9,10 +9,10 @@ block content
       each review in reviews
          div(id="user-review-container")
             div(id= "review-title-container")
-               a(href= `/games/${review.Game.id}`)= review.Game.name
-               div(id= "review-score")= review.score
+               a(href= `/games/${review.Game.id}`)= review.Game.title
+               div(id= "review-score")= review.rating
             div(id= "review-game-name")= "\"" + review.title + "\""
             div(id= "review-description-container")
-               div(id= "review-description")= review.description
+               div(id= "review-description")= review.content
       div(id="scroll-top")
          a(href= "#top") Top
