@@ -30,6 +30,7 @@ router.post('/api/games/:gameId(\\d+)/reviews', reviewValidators, jsonValidation
     // will create a new review and return the new review
     console.log('hit this route')
     const userId = res.locals.user.id
+    const user = await User.findByPk(userId);
 
     const { content, rating } = req.body;
     const gameId = req.params.gameId;
@@ -40,7 +41,7 @@ router.post('/api/games/:gameId(\\d+)/reviews', reviewValidators, jsonValidation
         gameId,
     })
 
-    res.status(201).json({ review });
+    res.status(201).json({ review, user });
 }))
 
 

@@ -21,17 +21,19 @@ window.addEventListener('DOMContentLoaded', event => {
             body: JSON.stringify(body),
         })
 
-        const review = await response.json();
+        const res = await response.json();
+        const newDiv = document.createElement('div');
 
         const reviewCard = `
-            <div class="card center">
-                <h4>User: ${review.userId} </h4>
-                <p>${review.content}</p>
-                <p>Rating:  ${review.rating}</p>
-            </div>
+                <h4>User: ${res.user.username} </h4>
+                <p>${res.review.content}</p>
+                <p>Rating:  ${res.review.rating}</p>
         `
+        newDiv.innerHTML = reviewCard
+        newDiv.classList.add('card');
+        newDiv.classList.add('center')
 
-        reviewDiv.appendChild(reviewCard);
+        reviewDiv.appendChild(newDiv);
 
     })
 })
