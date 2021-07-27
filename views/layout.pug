@@ -6,31 +6,32 @@ html
             link(rel='stylesheet' href='/stylesheets/reset.css')
             link(rel='stylesheet' href='/stylesheets/navbar.css')
     body
-        div(id='navbar-container' class='navbar')
-            div(id='button-container')
-                span(class='navbar-button')
-                a(href="/", method="post") Home
-                form#form
-                    input#query(type='search', name='searchbar', placeholder='Find your Game!')
-                    input.form-button(type="submit" value='searchbar')
-                if locals.authenticated
-                      ul
-                        li
-                            a(href="/reviews", method="post") My Reviews
-                        li
-                            a(href="/shelves", method="post") My Shelves
-                        li
-                            a(href="/logout", method="post") Logout
-                        li
-                            a(href="/about", method="post") About
-                else
-                      ul
-                        li
-                            a(href="/login", method="post") Login
-                        li
-                            a(href="/signup", method="post") Sign Up
-                        li
-                            a(href="demo", method="post") Demo
-                        li
-                            a(href="/about", method="post") About
+        header
+            div(id='navbar-container' class='navbar')
+                div(id='button-container')
+                    span(class='navbar-button')
+                    a(href="/", method="post") Home
+                    form#form
+                        input#query(type='search', name='searchbar', placeholder='Find your Game!')
+                        input.form-button(type="submit" value='searchbar')
+                    if locals.authenticated
+                        ul.navlist
+                            li
+                                a(href="/reviews", method="post") My Reviews
+                            li
+                                a(href="/shelves", method="post") My Shelves
+                            li
+                                a(href="/logout", method="post") Logout
+                            li
+                                a(href="/about", method="post") About
+                    else
+                        ul.navlist
+                            li
+                                a(href="/login", method="post") Login
+                            li
+                                a(href="/signup", method="post") Sign Up
+                            li
+                                a(href="demo", method="post") Demo
+                            li
+                                a(href="/about", method="post") About
         block content

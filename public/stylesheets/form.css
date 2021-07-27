@@ -8,6 +8,7 @@ body{
   background-color: #060919;
   min-height: 100vh;
   font-family:"Roboto Condensed", Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 form{
   margin-bottom: 0px;
