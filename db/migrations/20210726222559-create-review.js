@@ -29,6 +29,10 @@ module.exports = {
             updatedAt: {
                 allowNull: false,
                 type: Sequelize.DATE
+            },
+            rating: {
+                allowNull: false,
+                type: Sequelize.INTEGER,
             }
         });
     },
