@@ -1,6 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
-
 h1 {
-    color: #555555;
+    margin-left: 20%;
+    margin-top: 20px
 }
 
+.card {
+    display: flex;
+}
+
+.inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 25px;
+}
+
+img {
+    max-height: 150px;
+}
+
+.card .btn {
+    float: right;
+    margin-bottom: 0;
+    margin-right: 0;
+}
