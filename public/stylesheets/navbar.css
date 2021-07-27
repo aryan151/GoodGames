@@ -1,0 +1,44 @@
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+#navbar-container {
+    height: 50px;
+    background: linear-gradient(to right, #101842, #a44200);
+    border-style:hidden;
+ }
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: larger;
+    justify-content: center;
+}
+
+div {
+    padding: 10px;
+}
+
+a:hover {
+    color: #101842;
+}
+
+div.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+div > ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 150px;
+
+}
+div > form {
+    position: absolute;
+    right: 1000px;
+}
