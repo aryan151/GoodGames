@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 
 const { asyncHandler, csrfProtection } = require('./utils');
-const { User } = require('../db/models');
+const { User, UserShelf } = require('../db/models');
 const { loginValidators, userValidators } = require('./validators');
 const { loginUser, logoutUser } = require('../auth');
 
@@ -36,6 +36,33 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
     user.hashedPassword = hashedPassword;
 
     await user.save();
+
+    //make user shelves
+    const genDefaultShelves = async (user) =>{
+        let userId = user.id
+
+        let wantToPlay = await UserShelf.build({
+            name: 'Want to play',
+            userId
+        })
+
+        let currentlyPlaying = await UserShelf.build({
+            name: 'Currently Playing',
+            userId
+        })
+
+        let played = await UserShelf.build({
+            name: 'Played',
+            userId
+        })
+
+        await wantToPlay.save()
+        await currentlyPlaying.save()
+        await played.save()
+    }
+
+    genDefaultShelves(user)
+
 
     // TODO LOGIN THE USER
     loginUser(req, res, user);
