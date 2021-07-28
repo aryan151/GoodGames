@@ -12,7 +12,10 @@ router.use(requireAuth)
 
 
 // GET ALL SHELVES
+
+
 router.get('/shelves', csrfProtection, asyncHandler(async (req, res, next) => {
+
     const { userId } = req.session.auth;
 
     const shelves = await UserShelf.findAll({
@@ -24,7 +27,7 @@ router.get('/shelves', csrfProtection, asyncHandler(async (req, res, next) => {
             [{model: Game}, 'title']
         ]
     })
-    res.render('shelves', { title: 'Your Shelves', shelves, csrfToken: req.csrfToken() });
+    res.render('shelves', { title: 'Your Shelves', shelves });
 }));
 
 // GET LIST OF USER SHELVES
