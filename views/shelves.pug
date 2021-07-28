@@ -1,20 +1,22 @@
 extends layout.pug
 
 append head
-
+    link(rel='stylesheet' href = '/stylesheets/shelves.css')
 
 block content
     h1= title
-    each shelf in shelves
-        .card.center
+    each shelf, index in shelves
+        .card.center.game-card
             h2.card-title: a(href=`/shelves/${shelf.id}`)= shelf.name
-            each game in shelf.Games
-                p= game.title
-                img(src=game.imageURL, alt="")
+            .game-container
+                each game in shelf.Games
+                        .game-info
+                            p.game-title= game.title
+                            img.game-img(src=game.imageURL, alt="")
             form(action=`/shelves/${shelf.id}/delete`, method="post")
                 button.btn.btn-warning(type="submit") Delete Shelf
     form(action="/shelves", method="post")
         input(type="hidden", name="_csrf", value=csrfToken)
-        label(for="name") Shelf Name
-        input(type="text", name="name", id="name")
-        button.btn.btn-primary(type="submit") Add Shelf
+        .add-shelf
+            button.btn.btn-primary(type="submit") Add Shelf
+            input.shelf-name(type="text", name="name", id="name")
