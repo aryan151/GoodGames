@@ -35,6 +35,9 @@ block content
                         option(value="4") 4
                         option(value="5") 5
                 .form-group
+                    .error.hidden
+                        p The following error(s) occurred:
+                        ul.error#errors
                     label.center(for="content") Review
                     textarea.text-control.text-review(name="content", id="content", cols="30", rows="10")
 
