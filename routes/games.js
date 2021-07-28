@@ -12,6 +12,10 @@ const router = express.Router();
 router.get('/games', asyncHandler(async (req, res) => {
     const games = await Game.findAll();
 
+    games.forEach(game => {
+        getDate(game)
+    });
+
     res.render('games', { title: 'Games', games })
 }))
 
@@ -24,7 +28,9 @@ router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
         }
     });
 
-    res.render('game-page', { title: `Game - ${game.title}`,  game })
+    getDate(game);
+
+    res.render('game-page', { title: `Game - ${game.title}`, game })
 }))
 
 router.post('/api/games/:gameId(\\d+)/reviews', reviewValidators, jsonValidationHandler, asyncHandler(async (req, res) => {
@@ -59,12 +65,21 @@ router.post('/games/:gameId/delete', asyncHandler(async (req, res) => {
     res.redirect(`/shelves/${shelfId}`)
 }))
 
-router.post('/search', asyncHandler(async (req,res) => {
-    const {term} = req.body
+
+const getDate = (game) => {
+    const date = new Date(game.releaseDate);
+    const month = date.getMonth();
+    const day = date.getDay() + 1
+    const year = date.getFullYear();
+    game.date = `${month}/${day}/${year}`
+}
+
+router.post('/search', asyncHandler(async (req, res) => {
+    const { term } = req.body
     let foundGames = await Game.findAll({
         where:
         {
-          title: { [Op.iLike]: '%'+ term + '%' }
+            title: { [Op.iLike]: '%' + term + '%' }
         }
     })
     res.json(foundGames)

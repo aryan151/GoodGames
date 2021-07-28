@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
         const body = { content, rating }
 
-        const response = await fetch(`/api/games/${gameId}/reviews`, {
+        let res = await fetch(`/api/games/${gameId}/reviews`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,19 +21,31 @@ window.addEventListener('DOMContentLoaded', event => {
             body: JSON.stringify(body),
         })
 
-        const res = await response.json();
-        const newDiv = document.createElement('div');
+        res = await res.json();
+        const errorUL = document.getElementById('errors')
+        const errorElem = document.querySelector('.error')
+        if (res.errors) {
+            const errors = [];
+            res.errors.forEach(error => errors.push(`
+                <li>${error}</li>
+            `));
+            errorUL.innerHTML = errors.join('')
+            errorElem.classList.remove('hidden')
+        } else {
+            const newDiv = document.createElement('div');
 
-        const reviewCard = `
-                <h4>User: ${res.user.username} </h4>
-                <p>${res.review.content}</p>
-                <p>Rating:  ${res.review.rating}</p>
-        `
-        newDiv.innerHTML = reviewCard
-        newDiv.classList.add('card');
-        newDiv.classList.add('center')
+            const reviewCard = `
+                    <h4>User: ${res.user.username} </h4>
+                    <p>${res.review.content}</p>
+                    <p>Rating:  ${res.review.rating}</p>
+            `
+            newDiv.innerHTML = reviewCard
+            newDiv.classList.add('card');
+            newDiv.classList.add('center')
 
-        reviewDiv.appendChild(newDiv);
-
+            reviewDiv.appendChild(newDiv);
+            errorElem.classList.add('hidden')
+            reviewForm.reset()
+        }
     })
 })
