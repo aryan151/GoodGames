@@ -8,8 +8,9 @@ const { UserShelf, Game, GamesToShelf} = require('../db/models');
 const { requireAuth } = require('../auth');
 const { asyncHandler } = require('./utils');
 
-router.get('/', requireAuth, asyncHandler(async (req, res, next) => {
+router.get('/shelves', asyncHandler(async (req, res, next) => {
     const { userId } = req.session.auth;
+
     const games = await Game.findAll({
         order: [
             'title'
@@ -26,17 +27,25 @@ router.get('/', requireAuth, asyncHandler(async (req, res, next) => {
         ]
     })
     res.render('shelves', { shelves, games});
+
 }));
 
 
-router.post('/', requireAuth, asyncHandler(async (req, res, next) => {
+router.post('/api/shelves', asyncHandler(async (req, res, next) => {
     const { userId } = req.session.auth;
+
+
+
     const {gameId, usershelf} = req.body;
+
     let newShelf = await GamesToShelf.create({
         gameId: gameId,
         userShelfId: usershelf
-     })
-    res.redirect(`/shelves`)
+    })
+
+
+    res.json(shelves)
+
 }));
 
 
@@ -49,8 +58,10 @@ const shelfValidator = [
 ]
 
 
-router.post('/create-shelf', requireAuth, shelfValidator, asyncHandler(async (req, res, next) => {
-    const { userId } = req.session.auth;
+
+router.post('/shelves', shelfValidator, asyncHandler(async (req, res, next) => {
+    // const { userId } = req.session.auth;
+    const userId = 1
     const { name } = req.body;
 
     const games = await Game.findAll({
@@ -69,7 +80,7 @@ router.post('/create-shelf', requireAuth, shelfValidator, asyncHandler(async (re
         ]
     })
 
-    const newShelf = Usershelf.build({
+    const newShelf = UserShelf.build({
         name: name,
         userId: userId
     })
@@ -119,7 +130,7 @@ res.render('shelves-edit', { gameshelves, customShelves });
 
 
 
-router.get('/:id', requireAuth, asyncHandler(async (req, res) =>{
+router.get('shelves/:id', requireAuth, asyncHandler(async (req, res) =>{
 
     const shelfId = parseInt(req.params.id, 10);
     const {userId} = req.session.auth;
