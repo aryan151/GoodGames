@@ -9,7 +9,8 @@ block content
         .card.center.game-card
             h2.card-title: a(href=`/shelves/${shelf.id}`)= shelf.name
             .game-container
-                each game in shelf.Games
+                each game, index in shelf.Games
+                    if (index < 3)
                         .game-info
                             p.game-title= game.title
                             img.game-img(src=game.imageURL, alt="")
