@@ -45,4 +45,16 @@ router.post('/api/games/:gameId(\\d+)/reviews', reviewValidators, jsonValidation
 }))
 
 
+// DELETE GAME FROM SHELF
+router.post('/games/:gameId/delete', asyncHandler(async (req, res) => {
+    const gameId = parseInt(req.params.gameId, 10);
+    const { shelfId } = req.body;
+
+    const game = await Game.findByPk(gameId);
+
+    await game.removeUserShelves(shelfId)
+
+    res.redirect(`/shelves/${shelfId}`)
+}))
+
 module.exports = router;
