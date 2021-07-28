@@ -10,14 +10,16 @@ html
     body
         header
             div(id='navbar-container' class='navbar')
-                div(id='button-container')
-                    span(class='navbar-button')
-                    a(href="/", method="post") Home
-                    form#form
-                        input#query(type='search', name='searchbar', placeholder='Find your Game!')
-                        input.form-button(type="submit" value='searchbar')
+                <nav>
+                    <div class="logo">
+                        a(href="/", method="post") Good Games
+                    </div>
                     if locals.authenticated
                         ul.navlist
+                            li
+                                form#form
+                                    input#query(type='search', name='searchbar', placeholder='Find your Game!')
+                                    input.form-button(type="submit" value='searchbar')
                             li
                                 a(href="/reviews") My Reviews
                             li
@@ -29,6 +31,10 @@ html
                     else
                         ul.navlist
                             li
+                                form#form
+                                    input#query(type='search', name='searchbar', placeholder='Find your Game!')
+                                    input.form-button(type="submit" value='searchbar')
+                            li
                                 a(href="/login") Login
                             li
                                 a(href="/signup") Sign Up
@@ -36,4 +42,5 @@ html
                                 a(href="demo") Demo
                             li
                                 a(href="/about") About
+                </nav>
         block content
