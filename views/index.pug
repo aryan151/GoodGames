@@ -12,5 +12,6 @@ block content
             div.inner-container
                 h2.card-title= game.title
                 p= game.description
-                form(action="/api/shelves", method="post")
-                    button.btn.btn-primary.add-to-shelf(type="submit") add to my shelf
+                form.get-shelves(action="/api/shelves", method="post")
+                    input(type="hidden", name="gameId", value=game.id)
+                    button.btn.btn-primary(type="submit") add to my shelf
