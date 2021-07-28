@@ -3,9 +3,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const body = document.querySelector('body');
 
     body.addEventListener('click', event => {
-        const alreadyDisplayed = document.querySelector('.shelves');
-        if (document.body.contains(alreadyDisplayed)) {
-            alreadyDisplayed.remove()
+
+        console.log(event.target)
+        if(!event.target.className === 'shelf'){
+
+            const alreadyDisplayed = document.querySelector('.shelves');
+            if (document.body.contains(alreadyDisplayed)) {
+                alreadyDisplayed.remove()
+            }
         }
     })
 
