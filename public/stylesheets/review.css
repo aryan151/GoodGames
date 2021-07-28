@@ -66,10 +66,17 @@ main{
       margin-top: 15px;
   }
   #scroll-top > a:hover{
-      color: rgb(240, 59, 194);
+      color: #fd0d7d;
   }
 
   #games-link{
       margin: 0 auto;
+      margin-top: 20px;
       text-align: center;
+      font-size: 1.1rem;
+  }
+
+  #games-link:hover{
+    text-decoration: underline;
+
   }
