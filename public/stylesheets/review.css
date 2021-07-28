@@ -80,3 +80,11 @@ main{
     text-decoration: underline;
 
   }
+  h1 {
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    padding-top: 5px;
+}
