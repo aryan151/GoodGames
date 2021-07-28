@@ -8,9 +8,9 @@ block content
     h1= title
     each game in games
         .card.center
-            img(src=game.imageURL, alt=`Box art for ${game.title}`)
+            a(href=`/games/${game.id}`): img(src=game.imageURL, alt=`Box art for ${game.title}`)
             div.inner-container
-                h2.card-title= game.title
+                a(href=`/games/${game.id}`): h2.card-title= game.title
                 p= game.description
                 form.get-shelves(action="/api/shelves", method="post")
                     input(type="hidden", name="gameId", value=game.id)
