@@ -76,7 +76,7 @@ const getDate = (game) => {
 
 router.post('/search', asyncHandler(async (req, res) => {
     const { term } = req.body
-    let foundGames = await Game.findAll({
+    let games = await Game.findAll({
         where:
         {
             title: { [Op.iLike]: '%' + term + '%' }
