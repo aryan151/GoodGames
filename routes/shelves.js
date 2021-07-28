@@ -75,36 +75,24 @@ router.post('/shelves', csrfProtection ,shelfValidator, asyncHandler(async (req,
     }
 }))
 
-router.get('/edit', asyncHandler(async (req, res) =>{
+// DELETE SHELF
+router.post('/shelves/:id/delete', asyncHandler(async (req, res) => {
+    const shelfId = parseInt(req.params.id, 10);
 
-const { userId } = req.session.auth;
+    const shelfToDelete = await UserShelf.findByPk(shelfId);
 
-const gameshelves = await UserShelf.findAll({
-    where: {
-        userId: userId,
-        name:  ['Currently Playing', 'Want to Play', 'Played']
-    }
-})
+    shelfToDelete.destroy();
 
-const customShelves = await UserShelf.findAll({
-    where: {
-        userId: userId,
-        name: {
-            [Op.notIn]: ['Currently Playing', 'Want to Play', 'Played']
-        }
-    },
-    // order: [{
-    //     "name"
-    // }]
-})
-
-res.render('shelves-edit', { gameshelves, customShelves });
-
+    res.redirect('/shelves');
 }))
 
 
+// DELETE GAME FROM SHELF
+
+
+
 // GET SINGLE SHELF
-router.get('/shelves/:id', requireAuth, asyncHandler(async (req, res, next) => {
+router.get('/shelves/:id', asyncHandler(async (req, res, next) => {
     const shelfId = parseInt(req.params.id, 10);
 
     const gameshelf = await UserShelf.findByPk(shelfId, {

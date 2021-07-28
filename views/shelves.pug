@@ -11,6 +11,8 @@ block content
             each game in shelf.Games
                 p= game.title
                 img(src=game.imageURL, alt="")
+            form(action=`/shelves/${shelf.id}/delete`, method="post")
+                button.btn.btn-warning(type="submit") Delete Shelf
     form(action="/shelves", method="post")
         input(type="hidden", name="_csrf", value=csrfToken)
         label(for="name") Shelf Name
