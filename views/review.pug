@@ -6,8 +6,8 @@ append head
 block content
    main
       div(id="reviews-container")
-         each review in reviews
-            .card
+         each review , index in reviews
+            .card(id = `card${review.id}`)
                h2.card-title #{review.Game.title}
                a.card-sub-title(href= `/games/${review.Game.id}`) See Game Details
                h6.rating=`Your Rating: ${review.rating}`
@@ -16,7 +16,8 @@ block content
                .review-buttons
                   a(href = `/reviews/${review.id}`)
                      button.btn.btn-primary(type: "button") Edit
-                  button.btn.btn-warning#delete-button(type: "button") Delete
+                  button.btn.btn-warning.delete-button(type: "button" id = `${review.id}`) Delete
       div(id="scroll-top")
          a(href= "#top") return to top
                //- a(href= `/games/${review.Game.id}`)= review.Game.title
+   script(src="/javascripts/review-delete-button.js" type="module" defer)
