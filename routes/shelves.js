@@ -87,10 +87,6 @@ router.post('/shelves/:id/delete', asyncHandler(async (req, res) => {
 }))
 
 
-// DELETE GAME FROM SHELF
-
-
-
 // GET SINGLE SHELF
 router.get('/shelves/:id', asyncHandler(async (req, res, next) => {
     const shelfId = parseInt(req.params.id, 10);

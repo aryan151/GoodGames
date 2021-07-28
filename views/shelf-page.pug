@@ -10,4 +10,6 @@ block content
 
         p= game.title
         img(src=game.imageURL, alt="")
-        a.btn.btn-warning(href="/") Delete from shelf
+        form(action=`/games/${game.id}/delete`, method="post")
+            input(type="hidden" name="shelfId", value=gameshelf.id)
+            button.btn.btn-warning(type="submit") Remove From Shelf
