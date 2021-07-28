@@ -11,7 +11,10 @@ nav {
 	min-height: 8vh;
 	background-color: #a44200;
 }
-
+.logo{
+	display: flex;
+	align-self: flex-end;
+}
 .logo > a {
 	color: white;
 	text-transform: uppercase;
@@ -26,7 +29,7 @@ nav {
 
 .navlist {
 	display: flex;
-	justify-content: space-around;
+	/* justify-content: space-around; */
 	width: 40%;
 }
 .navlist li{
@@ -41,4 +44,8 @@ a {
 
 a:hover {
 	color: #101842;
+}
+
+.searchform{
+	display: flex;
 }
