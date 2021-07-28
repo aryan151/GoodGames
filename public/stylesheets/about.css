@@ -1,0 +1,34 @@
+
+main {
+    background-color: #a44200;
+   }
+   h1 {
+       display: flex;
+       justify-content: center;
+       color: white;
+       text-transform: uppercase;
+       letter-spacing: 5px;
+       font-size: 30px;
+       padding-bottom: 6px;
+   }
+   ul {
+       display: flex;
+       justify-content: space-around;
+       align-items: center;
+       min-height: 8vh;
+   }
+
+   p {
+       color: white;
+       text-transform: uppercase;
+       letter-spacing: 5px;
+       font-size: 22px;
+   }
+
+   li {
+       list-style: none;
+   }
+
+   img {
+       justify-content: flex-end;
+   }
