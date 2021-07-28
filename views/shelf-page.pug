@@ -1,15 +1,18 @@
 extends layout.pug
 
 append head
+   link(rel="stylesheet" href="/stylesheets/shelfpage.css")
 
 
 block content
-    p= gameshelf.User.username
-    h1= gameshelf.name
-    each game in gameshelf.Games
-
-        p= game.title
-        img(src=game.imageURL, alt="")
-        form(action=`/games/${game.id}/delete`, method="post")
-            input(type="hidden" name="shelfId", value=gameshelf.id)
-            button.btn.btn-warning(type="submit") Remove From Shelf
+    main
+        p= gameshelf.User.username
+        h1= gameshelf.name
+        each game in gameshelf.Games
+            div(id="shelf-container")
+                p= game.title
+                img(src=game.imageURL, alt="")
+                .shelf-button
+                    form(action=`/games/${game.id}/delete`, method="post")
+                        input(type="hidden" name="shelfId", value=gameshelf.id)
+                        button.btn.btn-warning(type="submit") Remove From Shelf
