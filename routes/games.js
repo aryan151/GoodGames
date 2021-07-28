@@ -1,5 +1,7 @@
 const express = require('express');
 
+const { Op } = require('sequelize');
+
 const { asyncHandler } = require('./utils');
 const { Game, Review, User } = require('../db/models');
 const { reviewValidators, jsonValidationHandler } = require('./validators');
@@ -55,6 +57,17 @@ router.post('/games/:gameId/delete', asyncHandler(async (req, res) => {
     await game.removeUserShelves(shelfId)
 
     res.redirect(`/shelves/${shelfId}`)
+}))
+
+router.post('/search', asyncHandler(async (req,res) => {
+    const {term} = req.body
+    let foundGames = await Game.findAll({
+        where:
+        {
+          title: { [Op.iLike]: '%'+ term + '%' }
+        }
+    })
+    res.json(foundGames)
 }))
 
 module.exports = router;
