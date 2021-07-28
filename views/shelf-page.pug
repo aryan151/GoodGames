@@ -1,0 +1,13 @@
+extends layout.pug
+
+append head
+
+
+block content
+    p= gameshelf.User.username
+    h1= gameshelf.name
+    each game in gameshelf.Games
+
+        p= game.title
+        img(src=game.imageURL, alt="")
+        a.btn.btn-warning(href="/") Delete from shelf

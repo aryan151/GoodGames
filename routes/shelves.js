@@ -3,19 +3,17 @@ const router = express.Router();
 
 
 const { check, validationResult } = require('express-validator');
-const { reviewValidators, userValidators } = require('./validators');
-const { UserShelf, Game, GamesToShelf} = require('../db/models');
+const { shelfValidator } = require('./validators');
+const { UserShelf, Game, GamesToShelf, User } = require('../db/models');
 const { requireAuth } = require('../auth');
-const { asyncHandler } = require('./utils');
+const { asyncHandler, csrfProtection } = require('./utils');
 
-router.get('/shelves', asyncHandler(async (req, res, next) => {
+router.use(requireAuth)
+
+
+// GET ALL SHELVES
+router.get('/shelves', csrfProtection ,asyncHandler(async (req, res, next) => {
     const { userId } = req.session.auth;
-
-    const games = await Game.findAll({
-        order: [
-            'title'
-        ]
-    });
 
     const shelves = await UserShelf.findAll({
         where: { userId: userId },
@@ -26,15 +24,12 @@ router.get('/shelves', asyncHandler(async (req, res, next) => {
             [{model: Game}, 'title']
         ]
     })
-    res.render('shelves', { shelves, games});
-
+    res.render('shelves', { title: 'Your Shelves', shelves, csrfToken: req.csrfToken() });
 }));
 
 
 router.post('/api/shelves', asyncHandler(async (req, res, next) => {
     const { userId } = req.session.auth;
-
-
 
     const {gameId, usershelf} = req.body;
 
@@ -49,29 +44,13 @@ router.post('/api/shelves', asyncHandler(async (req, res, next) => {
 }));
 
 
-const shelfValidator = [
-    check('name')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a value for Shelf Title')
-        .isLength({ max: 30 })
-        .withMessage('Name cannot be more than 30 characters')
-]
-
-
-
-router.post('/shelves', shelfValidator, asyncHandler(async (req, res, next) => {
-    // const { userId } = req.session.auth;
-    const userId = 1
+// CREATE SHELF
+router.post('/shelves', csrfProtection ,shelfValidator, asyncHandler(async (req, res, next) => {
+    const { userId } = req.session.auth;
     const { name } = req.body;
 
-    const games = await Game.findAll({
-        order: [
-            'title'
-        ]
-    })
-
     const shelves = await UserShelf.findAll({
-        where: { userId: userId},
+        where: { userId: userId },
         include: [{
             model: Game
         }],
@@ -88,87 +67,39 @@ router.post('/shelves', shelfValidator, asyncHandler(async (req, res, next) => {
     const validatorErrors = validationResult(req)
 
     if (validatorErrors.isEmpty()) {
-
         await newShelf.save();
         res.redirect('/shelves');
-
     } else {
-
         const errors = validatorErrors.array().map((error) => error.msg);
-        res.render('shelves', { shelves, games, errors });
-
+        res.render('shelves', { title: 'Your Shelves', shelves, csrfToken: req.csrfToken(), errors });
     }
-
 }))
 
-router.get('/edit', requireAuth, asyncHandler(async (req, res) =>{
-
-const { userId } = req.session.auth;
-
-const gameshelves = await UserShelf.findAll({
-    where: {
-        userId: userId,
-        name:  ['Currently Playing', 'Want to Play', 'Played']
-    }
-})
-
-const customShelves = await UserShelf.findAll({
-    where: {
-        userId: userId,
-        name: {
-            [Op.notIn]: ['Currently Playing', 'Want to Play', 'Played']
-        }
-    },
-    // order: [{
-    //     "name"
-    // }]
-})
-
-res.render('shelves-edit', { gameshelves, customShelves });
-
-}))
-
-
-
-router.get('shelves/:id', requireAuth, asyncHandler(async (req, res) =>{
-
+// DELETE SHELF
+router.post('/shelves/:id/delete', asyncHandler(async (req, res) => {
     const shelfId = parseInt(req.params.id, 10);
-    const {userId} = req.session.auth;
-    const gameshelf = await UserShelf.findByPk(shelfId, {
-        include: Game,
-    })
 
-    const games = await Game.findAll({
-        order: [
-            'title'
-        ]
-    })
+    const shelfToDelete = await UserShelf.findByPk(shelfId);
 
-    const shelves = await UserShelf.findAll({
-        where: {
-            userId: userId,
-        },
-        include: [{
-            model: Game
-        }],
-        order: [
-            [{model: Game}, 'title']
-        ]
+    shelfToDelete.destroy();
 
-    })
-
-    const shelf = await UserShelf.findByPk(shelfId)
-
-    res.render('shelves-list', {shelves, gameshelf, shelf})
-
-
-
+    res.redirect('/shelves');
 }))
 
 
+// DELETE GAME FROM SHELF
 
 
 
+// GET SINGLE SHELF
+router.get('/shelves/:id', asyncHandler(async (req, res, next) => {
+    const shelfId = parseInt(req.params.id, 10);
 
+    const gameshelf = await UserShelf.findByPk(shelfId, {
+        include: [Game, User],
+    });
+
+    res.render('shelf-page', { gameshelf })
+}))
 
 module.exports = router;

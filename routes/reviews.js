@@ -25,19 +25,22 @@ router.get('/reviews', requireAuth, asyncHandler(async (req,res,next)=>{
 
 router.get('/reviews/:id(\\d+)', asyncHandler(async (req,res,next)=>{
     const id = req.params.id
-    const {content} = req.body
-    let review = Review.findByPk(id, {
+    let review = await Review.findByPk(id, {
         include:[
             {model: Game},
             {model: User}
         ]
     })
-    res.render('review-edit', {title: 'Edit Review',review,content})
+
+    let content = review.content
+    let rating = review.rating
+
+    res.render('review-edit', {title: 'Edit Review',review,content,rating})
 }))
 
 router.post('/reviews/:id(\\d+)/edit', reviewEditValidators ,asyncHandler(async (req,res,next)=>{
     const id = req.params.id
-    const {content} = req.body
+    const {content, rating} = req.body
     let review = await Review.findByPk(id)
 
     const validationErrors = validationResult(req)
@@ -50,8 +53,9 @@ router.post('/reviews/:id(\\d+)/edit', reviewEditValidators ,asyncHandler(async 
     }
 
     review.content = content
-
+    review.rating = rating
     review.save()
+    res.redirect('/reviews')
 }))
 
 router.post('/reviews/:id(\\d+)/delete', asyncHandler(async (req,res,next)=>{
