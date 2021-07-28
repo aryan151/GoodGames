@@ -11,7 +11,7 @@ h6{
 .right-side{
     width: auto;
     align-self: flex-start ;
-    line-height: 15px;
+    line-height: 13px;
     display: flex;
     flex-direction: column;
     gap:10px;
@@ -36,4 +36,7 @@ h6{
     padding-left: 5%;
     display: flex;
     gap:30px
+}
+.add-btn{
+    align-self: flex-end;
 }
