@@ -2,26 +2,27 @@ extends layout
 
 block content
     link(rel='stylesheet' href = '/stylesheets/form.css')
-    div.form-container
-        form(action="/signup", method="post")
-                h2 Sign Up
-                input(type="hidden", name="_csrf", value=csrfToken)
-                .form-group
-                    label(for="username") Username
-                    input.form-control(type="text", name="username", id="username", value=user.username placeholder = 'Enter Username')
-                .form-group
-                    label(for="email") Email
-                    input.form-control(type= "text", id = 'email', name = 'email' placeholder ='Enter Email' value=user.email)
-                .form-group
-                    label(for="password") Password
-                    input.form-control(type= "password", id = 'password', name = 'password' placeholder = 'Enter Password')
-                .form-group
-                    label(for="confirmPassword") Confirm Password
-                    input.form-control(type="password", name="confirmPassword", id="confirmPassword" placeholder = 'Confirm Password')
-                    input.form-button(type="submit" value='Sign Up')
-        if errors
-            .form-group.error
-                p The following error(s) occurred:
-                ul.error
-                    each error in errors
-                        li= error
+    main
+        div.form-container
+            form(action="/signup", method="post")
+                    h2 Sign Up
+                    input(type="hidden", name="_csrf", value=csrfToken)
+                    .form-group
+                        label(for="username") Username
+                        input.form-control(type="text", name="username", id="username", value=user.username placeholder = 'Enter Username')
+                    .form-group
+                        label(for="email") Email
+                        input.form-control(type= "text", id = 'email', name = 'email' placeholder ='Enter Email' value=user.email)
+                    .form-group
+                        label(for="password") Password
+                        input.form-control(type= "password", id = 'password', name = 'password' placeholder = 'Enter Password')
+                    .form-group
+                        label(for="confirmPassword") Confirm Password
+                        input.form-control(type="password", name="confirmPassword", id="confirmPassword" placeholder = 'Confirm Password')
+                        input.form-button(type="submit" value='Sign Up')
+            if errors
+                .form-group.error
+                    p The following error(s) occurred:
+                    ul.error
+                        each error in errors
+                            li= error
