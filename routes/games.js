@@ -82,7 +82,7 @@ router.post('/search', asyncHandler(async (req, res) => {
             title: { [Op.iLike]: '%' + term + '%' }
         }
     })
-    res.json(foundGames)
+    res.render('search-result', {Title:`Search Results "${term}"`,games,term})
 }))
 
 module.exports = router;
