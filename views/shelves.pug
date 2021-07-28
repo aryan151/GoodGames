@@ -20,3 +20,10 @@ block content
         .add-shelf
             button.btn.btn-primary(type="submit") Add Shelf
             input.shelf-name(type="text", name="name", id="name")
+
+    if errors
+        .error-container
+            p The following error(s) occurred:
+            ul.error
+                each error in errors
+                    li= error
