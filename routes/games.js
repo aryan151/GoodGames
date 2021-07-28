@@ -1,5 +1,7 @@
 const express = require('express');
 
+const { Op } = require('sequelize');
+
 const { asyncHandler } = require('./utils');
 const { Game, Review, User } = require('../db/models');
 const { reviewValidators, jsonValidationHandler } = require('./validators');
@@ -28,7 +30,7 @@ router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
 
     getDate(game);
 
-    res.render('game-page', { title: `Game - ${game.title}`,  game })
+    res.render('game-page', { title: `Game - ${game.title}`, game })
 }))
 
 router.post('/api/games/:gameId(\\d+)/reviews', reviewValidators, jsonValidationHandler, asyncHandler(async (req, res) => {
@@ -72,5 +74,15 @@ const getDate = (game) => {
     game.date = `${month}/${day}/${year}`
 }
 
+router.post('/search', asyncHandler(async (req, res) => {
+    const { term } = req.body
+    let foundGames = await Game.findAll({
+        where:
+        {
+            title: { [Op.iLike]: '%' + term + '%' }
+        }
+    })
+    res.json(foundGames)
+}))
 
 module.exports = router;
