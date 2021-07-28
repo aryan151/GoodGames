@@ -12,7 +12,10 @@ router.use(requireAuth)
 
 
 // GET ALL SHELVES
-router.get('/shelves', csrfProtection ,asyncHandler(async (req, res, next) => {
+
+
+router.get('/shelves', csrfProtection, asyncHandler(async (req, res, next) => {
+
     const { userId } = req.session.auth;
 
     const shelves = await UserShelf.findAll({
@@ -24,7 +27,7 @@ router.get('/shelves', csrfProtection ,asyncHandler(async (req, res, next) => {
             [{model: Game}, 'title']
         ]
     })
-    res.render('shelves', { title: 'Your Shelves', shelves, csrfToken: req.csrfToken() });
+    res.render('shelves', { title: 'Your Shelves', shelves });
 }));
 
 // GET LIST OF USER SHELVES
@@ -41,14 +44,16 @@ router.post('/api/shelves', asyncHandler(async (req, res, next) => {
 }));
 
 // ADD GAME TO SHELF
-router.post('/shelves/:shelfId/games/:gameId', asyncHandler(async (req, res, next) => {
+router.post('/api/shelves/:shelfId/games/:gameId', asyncHandler(async (req, res, next) => {
     const shelfId = req.params.shelfId
     const gameId = req.params.gameId
 
     const game = await Game.findByPk(gameId);
 
     game.addUserShelves(shelfId);
-    res.redirect('/')
+
+    const shelf = await UserShelf.findByPk(shelfId)
+    res.status(201).json({ message: `${game.title} was added to: ${shelf.name}`})
 }));
 
 
@@ -89,7 +94,11 @@ router.post('/shelves/:id/delete', asyncHandler(async (req, res) => {
 
     const shelfToDelete = await UserShelf.findByPk(shelfId);
 
-    shelfToDelete.destroy();
+    const standardtitle = ['Want to play', 'Currently Playing', 'Played']
+
+    if (!standardtitle.includes(shelfToDelete.name))  {
+            shelfToDelete.destroy();
+    }
 
     res.redirect('/shelves');
 }))

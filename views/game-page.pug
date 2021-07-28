@@ -6,7 +6,7 @@ append head
     link(rel='stylesheet' href='/stylesheets/game-page.css')
 
 block content
-
+    main
         .card.center.game-card
             img(src=game.imageURL, alt=`Box art for ${game.title}`)
             div.inner-container
@@ -19,10 +19,20 @@ block content
         h2 Reviews
         div.reviews
             for review in game.Reviews
-                .card.center
-                    h4 #{review.User.username}
-                    p= review.content
-                    p Rating:  #{review.rating}
+                if (review.userId === userId)
+                    .card.center(id = `card${review.id}`)
+                        h4 #{review.User.username}
+                        p= review.content
+                        p Rating:  #{review.rating}
+                        .review-buttons
+                            a(href = `/reviews/${review.id}`)
+                                button.btn.btn-primary(type: "button") Edit
+                            button.btn.btn-warning.delete-button(type: "button" id = `${review.id}`) Delete
+                else
+                    .card.center
+                        h4 #{review.User.username}
+                        p= review.content
+                        p Rating:  #{review.rating}
 
         .card.center
             form(action=`/api/games/${game.id}/reviews`, method="post" class="add-review")
@@ -44,3 +54,4 @@ block content
                     textarea.text-control.text-review(name="content", id="content", cols="30", rows="10")
 
                     button.add-review.btn.btn-primary(type="submit") Submit
+    script(src="/javascripts/review-delete-button.js" type="module" defer)

@@ -21,6 +21,7 @@ router.get('/games', asyncHandler(async (req, res) => {
 
 router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
     const gameId = req.params.gameId;
+    const userId = res.locals.user.id
     const game = await Game.findByPk(gameId, {
         include: {
             model: Review,
@@ -30,7 +31,7 @@ router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
 
     getDate(game);
 
-    res.render('game-page', { title: `Game - ${game.title}`, game })
+    res.render('game-page', { title: `Game - ${game.title}`, game, userId})
 }))
 
 router.post('/api/games/:gameId(\\d+)/reviews', reviewValidators, jsonValidationHandler, asyncHandler(async (req, res) => {
