@@ -1,9 +1,22 @@
 extends layout.pug
 
+append head
+    link(rel='stylesheet' href = '/stylesheets/games.css')
+    link(rel='stylesheet' href = '/stylesheets/index.css')
+    script(src="/javascripts/index.js" type="module")
 
 block content
-    for game in games
-        h2: a(href=`/games/${game.id}`) #{game.title}
-        p= game.description
-        p= game.releaseDate
-        img(src=game.imageURL, alt=`Cover Art for ${game.title}`)
+    main
+        for game in games
+            div.card.game-card
+                .right-side
+                    h2: a(href=`/games/${game.id}`) #{game.title}
+                    img.game-img(src=game.imageURL, alt=`Cover Art for ${game.title}`)
+                    form.get-shelves(action="/api/shelves", method="post")
+                        input(type="hidden", name="gameId", value=game.id)
+                        button.btn.btn-primary(type="submit") add to my shelf
+                .left-side
+                    h6 At a Glance:
+                    p= game.description
+                    h6 Published:
+                    p= game.releaseDate

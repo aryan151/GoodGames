@@ -76,11 +76,7 @@ form{
     box-sizing:border-box;
     outline: none;
   }
-
-  select.form-control{
-    width:20%;
-  }
-
+  /* add to text area instead of .form-control */
   .text-control{
     margin:2px 0px 20px;
     border:none;
@@ -93,11 +89,16 @@ form{
     resize:none;
   }
 
+  select.form-control{
+    width:20%;
+  }
+
+
   #edit-content{
     display: flex;
     flex-direction: column;
   }
-  .center{
+  .edit-center{
     align-self:center;
     font-weight: bold;
   }
