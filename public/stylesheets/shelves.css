@@ -34,3 +34,11 @@
 .shelf-name{
     height:40px
 }
+
+h1 {
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
