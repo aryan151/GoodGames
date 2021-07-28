@@ -126,10 +126,21 @@ const jsonValidationHandler = (req, res, next) => {
 }
 
 
+const shelfValidator = [
+    check('name')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a value for Shelf Title')
+        .isLength({ max: 30 })
+        .withMessage('Name cannot be more than 30 characters')
+]
+
+
+
 module.exports = {
     loginValidators,
     userValidators,
     reviewValidators,
     jsonValidationHandler,
     reviewEditValidators,
+    shelfValidator,
 }
