@@ -68,3 +68,8 @@ main{
   #scroll-top > a:hover{
       color: rgb(240, 59, 194);
   }
+
+  #games-link{
+      margin: 0 auto;
+      text-align: center;
+  }
