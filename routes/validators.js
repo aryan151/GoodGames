@@ -59,7 +59,7 @@ const loginValidators = [
 const reviewValidators = [
     check('content')
         .exists({ checkFalsy: true })
-        .withMessage('Please content for your review'),
+        .withMessage('Please include content for your review'),
     check('rating')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a rating')
