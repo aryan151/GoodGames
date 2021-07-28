@@ -41,6 +41,7 @@ h1 {
     color: white;
     text-transform: uppercase;
     letter-spacing: 5px;
+    padding-top: 5px;
 }
 .error-container{
     display: flex;
