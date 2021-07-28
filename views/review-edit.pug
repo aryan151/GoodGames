@@ -1,0 +1,32 @@
+extends layout.pug
+
+append head
+   link(rel="stylesheet" href="/stylesheets/review.css")
+   link( rel= "stylesheet" href ="/stylesheets/form.css")
+
+block content
+
+    main
+        div(id="review-container")
+            .card(id = `card${review.id}`)
+                h2.card-title #{review.Game.title}
+                a.card-sub-title(href= `/games/${review.Game.id}`) See Game Details
+                h6.rating=`Your Rating: ${review.rating}`
+                h6.content-header You Said:
+                p.review-content #{review.content}
+                .review-buttons
+            .card(id = `edit-content`)
+                form(action=`/reviews/${review.id}/edit`, method="post")
+                    .form-group
+                        label.center(for = 'rating') Change Rating
+                        select.form-control.center(name="rating")
+                            each val in [1,2,3,4,5]
+                                if(val === rating)
+                                    option(value = val selected = 'selected') #{val}
+                                else
+                                    option(value = val ) #{val}
+
+                    .form-group
+                        label.center(for = 'content') Edit Your Review
+                        textarea.text-control(name="content", cols="30", rows="10") #{content}
+                        input.btn.btn-primary(type="submit" value='Submit New Review')

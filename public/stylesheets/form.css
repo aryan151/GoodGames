@@ -77,6 +77,30 @@ form{
     outline: none;
   }
 
+  select.form-control{
+    width:20%;
+  }
+
+  .text-control{
+    margin:2px 0px 20px;
+    border:none;
+    background: transparent;
+    border-bottom: 1px solid rgb(32, 30, 30);
+    font-size: 16px;
+    box-sizing:border-box;
+    outline: none;
+    padding:5%;
+    resize:none;
+  }
+
+  #edit-content{
+    display: flex;
+    flex-direction: column;
+  }
+  .center{
+    align-self:center;
+    font-weight: bold;
+  }
   .error-container{
     display: flex;
     flex-direction: column;
