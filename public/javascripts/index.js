@@ -6,10 +6,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
         addForm.addEventListener('submit', async event => {
             event.preventDefault();
             event.stopPropagation();
+
             const alreadyDisplayed = document.querySelector('.shelves');
+
             if (document.body.contains(alreadyDisplayed)) {
                 alreadyDisplayed.remove()
             }
+
             const parent = addForm.parentElement;
             const formData = new FormData(addForm);
             const gameId = formData.get('gameId');
@@ -39,12 +42,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
             parent.appendChild(tempDiv);
 
+            const shelfButtons = document.querySelectorAll('.shelf');
+
+            shelfButtons.forEach(button => {
+                button.addEventListener('click', event => {
+                    console.log('HIT THIS!');
+                    event.stopPropagation();
+                });
+
+            })
+
         })
     })
 
-    document.querySelector('.add-to-shelf').addEventListener('click', event => {
-        event.stopPropagation();
-    })
 
     body.addEventListener('click', event => {
         const alreadyDisplayed = document.querySelector('.shelves');
