@@ -2,26 +2,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const addForms = document.querySelectorAll('.get-shelves');
     const body = document.querySelector('body');
 
-    body.addEventListener('click', event => {
-
-        console.log(event.target)
-        if(!event.target.className === 'shelf'){
-
-            const alreadyDisplayed = document.querySelector('.shelves');
-            if (document.body.contains(alreadyDisplayed)) {
-                alreadyDisplayed.remove()
-            }
-        }
-    })
-
     addForms.forEach(addForm => {
         addForm.addEventListener('submit', async event => {
+            event.preventDefault();
+            event.stopPropagation();
             const alreadyDisplayed = document.querySelector('.shelves');
             if (document.body.contains(alreadyDisplayed)) {
                 alreadyDisplayed.remove()
             }
-            event.preventDefault();
-            event.stopPropagation();
             const parent = addForm.parentElement;
             const formData = new FormData(addForm);
             const gameId = formData.get('gameId');
@@ -50,6 +38,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
             parent.style.position = 'relative'
 
             parent.appendChild(tempDiv);
+
         })
+    })
+
+    document.querySelector('.add-to-shelf').addEventListener('click', event => {
+        event.stopPropagation();
+    })
+
+    body.addEventListener('click', event => {
+        const alreadyDisplayed = document.querySelector('.shelves');
+        if (document.body.contains(alreadyDisplayed)) {
+            alreadyDisplayed.remove()
+        }
     })
 })
