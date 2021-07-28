@@ -16,7 +16,7 @@ html
                     </div>
                     if locals.authenticated
                         ul.navlist
-                            li.searchform
+                            li
                                 form(action = '/search', method = 'post')
                                     input#query(type='search', name='term', placeholder='Find your Game!')
                                     input(type="submit" value='search')
@@ -30,7 +30,7 @@ html
                                 a(href="/about") About
                     else
                         ul.navlist
-                            li.searchform
+                            li
                                 form(action = '/search', method = 'post')
                                     input#query(type='search', name='term', placeholder='Find your Game!')
                                     input(type="submit" value='search')
