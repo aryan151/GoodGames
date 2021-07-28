@@ -34,3 +34,17 @@
 .shelf-name{
     height:40px
 }
+
+.error-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .error li{
+    /* display: flex;
+    flex-direction: column; */
+    color:red;
+    list-style-position: inside;
+    text-align: center;
+  }
