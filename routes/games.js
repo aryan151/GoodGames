@@ -10,6 +10,10 @@ const router = express.Router();
 router.get('/games', asyncHandler(async (req, res) => {
     const games = await Game.findAll();
 
+    games.forEach(game => {
+        getDate(game)
+    });
+
     res.render('games', { title: 'Games', games })
 }))
 
@@ -21,6 +25,8 @@ router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
             include: User
         }
     });
+
+    getDate(game);
 
     res.render('game-page', { title: `Game - ${game.title}`,  game })
 }))
@@ -56,5 +62,15 @@ router.post('/games/:gameId/delete', asyncHandler(async (req, res) => {
 
     res.redirect(`/shelves/${shelfId}`)
 }))
+
+
+const getDate = (game) => {
+    const date = new Date(game.releaseDate);
+    const month = date.getMonth();
+    const day = date.getDay() + 1
+    const year = date.getFullYear();
+    game.date = `${month}/${day}/${year}`
+}
+
 
 module.exports = router;
