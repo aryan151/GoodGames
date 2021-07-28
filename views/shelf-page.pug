@@ -2,6 +2,7 @@ extends layout.pug
 
 append head
    link(rel="stylesheet" href="/stylesheets/shelfpage.css")
+   link(rel='stylesheet' href = '/stylesheets/games.css')
 
 
 block content
@@ -9,10 +10,15 @@ block content
         p= gameshelf.User.username
         h1= gameshelf.name
         each game in gameshelf.Games
-            div(id="shelf-container")
-                p= game.title
-                img(src=game.imageURL, alt="")
-                .shelf-button
-                    form(action=`/games/${game.id}/delete`, method="post")
-                        input(type="hidden" name="shelfId", value=gameshelf.id)
-                        button.btn.btn-warning(type="submit") Remove From Shelf
+                div.card.game-card
+                    .right-side
+                        h2: a(href=`/games/${game.id}`) #{game.title}
+                        img.game-img(src=game.imageURL, alt=`Cover Art for ${game.title}`)
+                        form(action=`/games/${game.id}/delete`, method="post")
+                            input(type="hidden" name="shelfId", value=gameshelf.id)
+                            button.btn.btn-warning(type="submit") Remove From Shelf
+                    .left-side
+                        h6 At a Glance:
+                        p= game.description
+                        h6 Published:
+                        p= game.releaseDate
