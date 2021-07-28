@@ -8,7 +8,7 @@ append head
 
 block content
     main
-        if games
+        if (games.length > 0)
             h1.search-msg= `Games that match "${term}"`
             for game in games
                 div.card.game-card
@@ -24,5 +24,5 @@ block content
                         h6 Published:
                         p= game.releaseDate
         else
-            h1= `No games found that match "${term}"`
+            h1.search-msg= `No games found that match "${term}"`
             a(href = '/') Find a game you'll Love?
