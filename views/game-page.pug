@@ -1,24 +1,37 @@
 extends layout.pug
 
+append head
+    script(src="/javascripts/game-page.js" type="module")
+    link(rel='stylesheet' href='/stylesheets/form.css')
 
 block content
-        h2= game.title
-        p= game.description
-        p= game.releaseDate
-        h3 Reviews
+
+        .card.center
+            h1= game.title
+            img(src=game.imageURL, alt=`Box art for ${game.title}`)
+            p= game.description
+            p= game.releaseDate
+        h2 Reviews
+        div.reviews
             for review in game.Reviews
-                h4 User: #{review.User.username}
-                p= review.content
-                p Rating:  #{review.rating}
-        h3 Add a Review
-        form(action=`/api/games/${game.id}/reviews`, method="post")
-            label(for="content") Review
-            textarea(name="content", id="content", cols="30", rows="10")
-            label(for="rating") Rating
-            select(name="rating", id="rating")
-                option(value="1") 1
-                option(value="2") 2
-                option(value="3") 3
-                option(value="4") 4
-                option(value="5") 5
-            button(type="submit") Submit
+                .card.center
+                    h4 User: #{review.User.username}
+                    p= review.content
+                    p Rating:  #{review.rating}
+
+        .form-container.card
+            form(action=`/api/games/${game.id}/reviews`, method="post" class="add-review")
+                h3.card-title Add a Review
+                    input(type="hidden", value=game.id, name="gameId", id="gameId")
+                .form-group
+                    label(for="content") Review
+                    textarea(name="content", id="content", cols="30", rows="10")
+                .form-group
+                    label(for="rating") Rating
+                    select(name="rating", id="rating")
+                        option(value="1") 1
+                        option(value="2") 2
+                        option(value="3") 3
+                        option(value="4") 4
+                        option(value="5") 5
+                button.add-review.btn.btn-primary(type="submit") Submit
