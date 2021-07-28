@@ -17,9 +17,9 @@ html
                     if locals.authenticated
                         ul.navlist
                             li
-                                form#form
-                                    input#query(type='search', name='searchbar', placeholder='Find your Game!')
-                                    input.form-button(type="submit" value='searchbar')
+                                form(action = '/search', method = 'post')
+                                    input#query(type='search', name='term', placeholder='Find your Game!')
+                                    input.form-button(type="submit" value='search')
                             li
                                 a(href="/reviews") My Reviews
                             li

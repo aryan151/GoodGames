@@ -61,13 +61,13 @@ router.post('/games/:gameId/delete', asyncHandler(async (req, res) => {
 
 router.post('/search', asyncHandler(async (req,res) => {
     const {term} = req.body
-    let foundGames = await Game.findAll({
+    let games = await Game.findAll({
         where:
         {
           title: { [Op.iLike]: '%'+ term + '%' }
         }
     })
-    res.json(foundGames)
+    res.render('search-result', {Title:`Search Results "${term}"`,games,term})
 }))
 
 module.exports = router;
