@@ -5,6 +5,7 @@ const { Op } = require('sequelize');
 const { asyncHandler } = require('./utils');
 const { Game, Review, User } = require('../db/models');
 const { reviewValidators, jsonValidationHandler } = require('./validators');
+const sequelize = require('sequelize');
 
 
 const router = express.Router();
@@ -22,12 +23,15 @@ router.get('/games', asyncHandler(async (req, res) => {
 router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
     const gameId = req.params.gameId;
     const game = await Game.findByPk(gameId, {
+        group: ['Game.id', 'Reviews.id', "Reviews->User.id"],
         include: {
             model: Review,
-            include: User
+            attributes: [[sequelize.fn('SUM', sequelize.col('Reviews.rating')), 'count']],
+            // attributes: [[sequelize.fn('sum', sequelize.col('rating')), 'sum']],
+            include: User,
         }
     });
-
+    console.log(game);
     getDate(game);
 
     res.render('game-page', { title: `Game - ${game.title}`, game })
