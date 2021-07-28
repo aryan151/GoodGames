@@ -27,20 +27,28 @@ router.get('/shelves', csrfProtection ,asyncHandler(async (req, res, next) => {
     res.render('shelves', { title: 'Your Shelves', shelves, csrfToken: req.csrfToken() });
 }));
 
-
+// GET LIST OF USER SHELVES
 router.post('/api/shelves', asyncHandler(async (req, res, next) => {
     const { userId } = req.session.auth;
 
-    const {gameId, usershelf} = req.body;
-
-    let newShelf = await GamesToShelf.create({
-        gameId: gameId,
-        userShelfId: usershelf
+    const userShelves = await UserShelf.findAll({
+        where: {
+            userId: userId
+        }
     })
 
+    res.json({ userShelves })
+}));
 
-    res.json(shelves)
+// ADD GAME TO SHELF
+router.post('/shelves/:shelfId/games/:gameId', asyncHandler(async (req, res, next) => {
+    const shelfId = req.params.shelfId
+    const gameId = req.params.gameId
 
+    const game = await Game.findByPk(gameId);
+
+    game.addUserShelves(shelfId);
+    res.redirect('/')
 }));
 
 
