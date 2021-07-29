@@ -43,6 +43,11 @@ router.post('/reviews/:id(\\d+)/edit', reviewEditValidators ,asyncHandler(async 
     const {content, rating} = req.body
     let review = await Review.findByPk(id)
 
+    let {history} = req.session
+
+    console.log(history)
+
+
     const validationErrors = validationResult(req)
 
     if (!validationErrors.isEmpty()) {
