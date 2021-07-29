@@ -2,6 +2,9 @@ window.addEventListener('DOMContentLoaded', event => {
     const reviewForm = document.querySelector('.add-review')
     const reviewDiv = document.querySelector('.reviews')
 
+    if(!reviewForm){
+        return
+    }
     reviewForm.addEventListener('submit', async event => {
         event.preventDefault();
 

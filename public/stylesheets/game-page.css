@@ -77,3 +77,16 @@ img {
     border-radius: 10px;
     border: 1px solid;
 }
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+
+}
+
+.container-btn{
+    font-weight: normal;
+    margin-bottom: 0px;
+}
