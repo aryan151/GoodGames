@@ -30,3 +30,35 @@ img {
 .hidden {
     display: none;
 }
+
+
+.shelf {
+    border: none;
+    text-justify: center;
+    background-color: transparent;
+    min-width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #D3B99F;
+}
+
+.shelf:hover {
+    background-color: #a44200;
+    color: white;
+}
+
+.shelves {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 40px;
+    right: 0px;
+    background-color: white;
+    padding: 10px;
+    width: 145px;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
