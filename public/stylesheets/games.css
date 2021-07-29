@@ -1,12 +1,12 @@
 main{
     display: flex;
     flex-direction: column;
-    margin:50px;
+    margin:30px;
     margin-top: 0;
     margin-bottom: 0;
     align-items:center;
     text-align: justify;
-    background-color: white;
+    /* background-color: white; */
 }
 h6{
     font-weight: bold;
