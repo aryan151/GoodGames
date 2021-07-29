@@ -4,6 +4,11 @@ const logHistory = (req, res, next) => {
       history = [];
       req.session.history = history;
     }
+    console.log(history.length)
+    if(history.length > 6){
+        history = history.slice(0,3)
+        req.session.history = history
+    }
     const url = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
     history.unshift(url);
     next();

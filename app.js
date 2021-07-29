@@ -11,7 +11,7 @@ const usersRouter = require('./routes/users');
 const gamesRouter = require('./routes/games');
 const reviewsRouter = require('./routes/reviews')
 const shelvesRouter = require('./routes/shelves')
-
+const {logHistory} = require('./utils')
 const { restoreUser } = require('./auth');
 const { sessionSecret } = require('./config');
 
@@ -38,6 +38,7 @@ app.use(
     })
 );
 app.use(restoreUser);
+app.use(logHistory)
 
 // create Session table if it doesn't already exist
 store.sync();
