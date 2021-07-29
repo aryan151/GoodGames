@@ -24,6 +24,7 @@ module.exports = {
         { content: 'GOAT! This was a real game-changer for the videogames industry. It had it all!', userId: 4, gameId: 10, createdAt: new Date(), updatedAt: new Date(), rating: 5 },
         { content: 'Truly beautiful game and an experience that is fully appreciated from my point of view. The next Sim City 4 deluxemade by Paradox. Thank you, I am sincerely grateful!', userId: 3, gameId: 11, createdAt: new Date(), updatedAt: new Date(), rating: 4 },
         { content: '', userId: 2, gameId: 11, createdAt: new Date(), updatedAt: new Date(), rating: 4 },
+
         //ton of reviews on one game
 
         { content: 'Rarely is there such a perfect mixture of graphics, sound, and gameplay that even the most cynical players will admit that Zelda 64 is poised to shape the action RPG genre for years to come.', userId: 1, gameId: 1, createdAt: new Date(), updatedAt: new Date(), rating: 5 },
@@ -40,7 +41,23 @@ module.exports = {
         { content: 'An amazing game.', userId: 1, gameId: 1, createdAt: new Date(), updatedAt: new Date(), rating: 3 },
         { content: 'When The Legend of Zelda: Ocarina of Time released in 1998, it was widely considered to be the greatest video game ever made.', userId: 4, gameId: 1, createdAt: new Date(), updatedAt: new Date(), rating: 3 },
         { content: 'While some elements are clearly dated, it’s fair to say that the N64’s finest adventure still holds up for the most part.', userId: 4, gameId: 1, createdAt: new Date(), updatedAt: new Date(), rating: 4 },
+        ///////////////////////////////
 
+        //one user with many reviews
+
+        { content: 'Great games which have aged well. I only wish it were possible to trade/transfer between games on a single console given the lack of an online trading feature.', userId: 3, gameId: 3, createdAt: new Date(), updatedAt: new Date(), rating: 5 },
+        { content: 'Rare is soooooo good', userId: 3, gameId: 2, createdAt: new Date(), updatedAt: new Date(), rating: 2 },
+        { content: `It's a bit ridiculous to say that this game is "completely unplayable" because it doesn't have features a newer game doesn't have.`, userId: 3, gameId: 3, createdAt: new Date(), updatedAt: new Date(), rating: 3 },
+        { content: 'Pokemon is my life', userId: 3, gameId: 2, createdAt: new Date(), updatedAt: new Date(), rating: 1 },
+        { content: 'Rad', userId: 3, gameId: 3, createdAt: new Date(), updatedAt: new Date(), rating: 2 },
+        { content: `In the game, players control one of three main characters, Juno, Vela, and Lupus the dog. As the title begins, each character is forced to play through three huge, though entirely unique worlds before finally travelling to Mizar's Palace -- a meeting point. Only`, userId: 3, gameId: 2, createdAt: new Date(), updatedAt: new Date(), rating: 1 },
+        { content: 'Love it!!!!', userId: 3, gameId: 2, createdAt: new Date(), updatedAt: new Date(), rating: 1 },
+        { content: `
+        On the whole everything's aged surprisingly well. The visuals are hugely dated of course, but the mechanics and gameplay are just as engrossing as they were two decades ago. It's true that the various new elements found in later Pokémon titles do allow for more precise and repeatable strategies, but the simplicity of this older system matches the hardware it was originally running on, so we found ourselves very quickly adapting to this more archaic way of playing. One major drawback however is the lack of description for any of the in-game moves, meaning the only real way to find out what they do is through trial and error. This isn't going to be any kind of an issue for the more experienced players, but those without prior Pokémon knowledge will likely find this unnecessarily frustrating.`, userId: 3, gameId: 3, createdAt: new Date(), updatedAt: new Date(), rating: 3 },
+        { content: `
+        The action is non-stop. JFG features its share of exploration and puzzle-solving, but the game is a shooter at its core. In any given level, there are literally dozens and dozens of drones to kill and each weapon will take them out in a different way.`, userId: 3, gameId: 2, createdAt: new Date(), updatedAt: new Date(), rating: 5 },
+        { content: 'Hyrule is a geographically diverse land comprising many biomes. It’s steeped in history and legend, and home to a number of different races and tribes.', userId: 3, gameId: 1, createdAt: new Date(), updatedAt: new Date(), rating: 2  },
+        { content: 'Hyrule is a geographically diverse land comprising many biomes. It’s steeped in history and legend, and home to a number of different races and tribes.', userId: 3, gameId: 1, createdAt: new Date(), updatedAt: new Date(), rating: 5 },
 
         ], {});
     },
