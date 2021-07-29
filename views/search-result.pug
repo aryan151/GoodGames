@@ -23,8 +23,15 @@ block content
                         h6 At a Glance:
                         p= game.description
                         h6 Published:
+
                         p= game.date
-                        h5 Rating: #{game.avg}
+                        if (game.avg > 0))
+                            h5 Rating: #{game.avg}
+                        else
+                            h5 Rating: No rating available
+                   
+
+
         else
             h1.search-msg= `No games found that match "${term}"`
             a(href = '/') Find a game you'll Love?
