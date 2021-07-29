@@ -12,7 +12,8 @@ block content
                 each game, index in shelf.Games
                     if (index < 3)
                         .game-info
-                            a(href=`/games/${game.id}`): p.game-title= game.title
+                            div.link-container
+                                a(href=`/games/${game.id}`): p.game-title= game.title
                             img.game-img(src=game.imageURL, alt="")
             form(action=`/shelves/${shelf.id}/delete`, method="post")
                 button.btn.btn-warning(type="submit") Delete Shelf
