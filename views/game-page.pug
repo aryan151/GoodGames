@@ -2,13 +2,19 @@ extends layout.pug
 
 append head
     script(src="/javascripts/game-page.js" type="module")
+    script(src="/javascripts/index.js" type="module")
     link(rel='stylesheet' href='/stylesheets/form.css')
+    //- link(rel='stylesheet' href = '/stylesheets/index.css')
     link(rel='stylesheet' href='/stylesheets/game-page.css')
 
 block content
     main
         .card.center.game-card
-            img(src=game.imageURL, alt=`Box art for ${game.title}`)
+            div
+                img(src=game.imageURL, alt=`Box art for ${game.title}`)
+                form.get-shelves(action="/api/shelves", method="post")
+                    input(type="hidden", name="gameId", value=game.id)
+                    button.btn.btn-primary(type="submit") add to my shelf
             div.inner-container
                 div
                     h1.card-title= game.title
