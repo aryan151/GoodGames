@@ -35,16 +35,25 @@ router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
 
 
     const game = await Game.findByPk(gameId, {
-        group: ['Game.id', 'Reviews.id', "Reviews->User.id"],
         include: {
             model: Review,
-            attributes: [[sequelize.fn('SUM', sequelize.col('Reviews.rating')), 'count']],
-            // attributes: [[sequelize.fn('sum', sequelize.col('rating')), 'sum']],
             include: User,
         }
     });
-    console.log(game);
+
+    const reviews = await Review.findAll({
+        raw: true,
+        where: {
+            gameId
+        },
+        attributes: [[sequelize.fn('AVG', sequelize.col('rating')), 'avg']]
+    })
+
+    console.log(reviews[0].avg);
+
     getDate(game);
+
+    game.avg = Number(reviews[0].avg).toFixed(2)
 
     res.render('game-page', { title: `Game - ${game.title}`, game, userId})
 }))
