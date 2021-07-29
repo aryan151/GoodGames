@@ -43,16 +43,21 @@ h1 {
     letter-spacing: 5px;
     padding-top: 5px;
 }
+
+h2:hover {
+    text-decoration: underline;
+}
+
 .error-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
 
-  .error li{
+.error li{
     /* display: flex;
     flex-direction: column; */
     color:red;
     list-style-position: inside;
     text-align: center;
-  }
+}

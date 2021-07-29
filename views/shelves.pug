@@ -7,7 +7,7 @@ block content
     h1= title
     each shelf, index in shelves
         .card.center.game-card
-            h2.card-title: a(href=`/shelves/${shelf.id}`)= shelf.name
+            a(href=`/shelves/${shelf.id}`): h2.card-title= shelf.name
             .game-container
                 each game, index in shelf.Games
                     if (index < 3)
