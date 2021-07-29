@@ -13,7 +13,7 @@ nav {
 }
 .logo{
 	display: flex;
-	align-self: flex-end;
+	align-self: center;
 }
 .logo > a {
 	color: white;
@@ -23,13 +23,16 @@ nav {
 	text-decoration: none;
 	font-weight: bold;
 }
-.logo > a:hover {
-	color: #101842;
+
+.logoList {
+	display: flex;
+	justify-content: space-around;
+	width: 40%;
 }
 
 .navlist {
 	display: flex;
-	/* justify-content: space-around; */
+	justify-content: space-around;
 	width: 40%;
 }
 .navlist li{
@@ -46,6 +49,41 @@ a:hover {
 	color: #101842;
 }
 
-.searchform{
-	display: flex;
+.search_box {
+	background-color: white;
+	border-radius: 40px;
+	padding: 10px;
+}
+
+.input_box {
+	border: none;
+	outline: none;
+	background: none;
+	float: left;
+	padding: 0;
+	color: #a44200;
+	font-size: 16px;
+	transition: 01s all;
+	line-height: 40px;
+	width: 0;
+}
+
+.butt {
+	float: right;
+	background-color: #a44200;
+	color:#a44200;
+	text-decoration: none;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+}
+
+::placeholder {
+	color:#a44200;
+}
+.search_box:hover .input_box {
+	width: 240px;
+	padding: 0 6px;
 }
