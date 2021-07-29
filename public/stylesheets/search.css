@@ -2,3 +2,8 @@
     text-align: left;
     margin:auto
 }
+
+h2 > a {
+    font-weight: 600;
+    letter-spacing: 1px;
+}

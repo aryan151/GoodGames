@@ -8,9 +8,16 @@ main{
     text-align: justify;
     /* background-color: white; */
 }
+
 h6{
     font-weight: bold;
 }
+
+h2 > a {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
 .right-side{
     width: auto;
     align-self: flex-start ;
