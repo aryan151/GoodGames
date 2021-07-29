@@ -19,8 +19,7 @@ block content
                 else
                     .empty-message
                         h2.card-title.empty-text This shelf doesnt have any games right now
-                        a.games-link(href = '/')
-                            p Find a Game?
+                        a.games-link(href = '/') Find a Game?
             if (shelf.name != "Played" && shelf.name != "Want to play" && shelf.name != "Currently Playing")
                 form(action=`/shelves/${shelf.id}/delete`, method="post")
                     button.btn.btn-warning(type="submit") Delete Shelf
