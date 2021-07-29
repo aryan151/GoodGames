@@ -2,23 +2,27 @@ window.addEventListener('DOMContentLoaded', event => {
     const logoutLink = document.querySelector('#logout')
     const demolink = document.querySelector('#demo')
 
-    logoutLink.addEventListener('click', async event => {
-        event.preventDefault();
+    if (logoutLink) {
+        logoutLink.addEventListener('click', async event => {
+            event.preventDefault();
 
-        await fetch('/logout', {
-            method: 'post',
+            await fetch('/logout', {
+                method: 'post',
+            })
+
+            return window.location.href = '/'
         })
+    }
 
-        return window.location.href = '/'
-    })
+    if (demolink) {
+        demolink.addEventListener('click', async event => {
+            event.preventDefault();
 
-    demolink.addEventListener('click', async event => {
-        event.preventDefault();
+            await fetch('/demo', {
+                method: 'post',
+            })
 
-        await fetch('/demo', {
-            method: 'post',
+            return window.location.href = '/'
         })
-
-        return window.location.href = res.url
-    })
+    }
 })
