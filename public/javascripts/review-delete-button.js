@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', event => {
         emptyText.innerText ='You dont have any reviews right now'
 
         let gamesLink = document.createElement('a')
-        gamesLink.href = ''
+        gamesLink.href = '/'
 
         let gamesLinkText = document.createElement('p')
         gamesLinkText.innerText = 'Find a Game?'
