@@ -43,6 +43,13 @@ router.post('/reviews/:id(\\d+)/edit', reviewEditValidators ,asyncHandler(async 
     const {content, rating} = req.body
     let review = await Review.findByPk(id)
 
+    let {history} = req.session
+
+
+
+    let redirectTarget = history[2].split('http://localhost:8080')[1]
+
+
     const validationErrors = validationResult(req)
 
     if (!validationErrors.isEmpty()) {
@@ -55,7 +62,7 @@ router.post('/reviews/:id(\\d+)/edit', reviewEditValidators ,asyncHandler(async 
     review.content = content
     review.rating = rating
     review.save()
-    res.redirect('/reviews')
+    res.redirect(redirectTarget)
 }))
 
 router.post('/reviews/:id(\\d+)/delete', asyncHandler(async (req,res,next)=>{
