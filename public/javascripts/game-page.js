@@ -35,17 +35,42 @@ window.addEventListener('DOMContentLoaded', event => {
             const newDiv = document.createElement('div');
 
             const reviewCard = `
-                    <h4>User: ${res.user.username} </h4>
+                    <h4> ${res.user.username} </h4>
                     <p>${res.review.content}</p>
                     <p>Rating:  ${res.review.rating}</p>
+                    <div class="review-buttons">
+                        <a href = "/reviews/${res.review.id}">
+                        <button class="btn btn-primary">
+                        Edit
+                        </button>
+                        </a>
+                        <button class="btn btn-warning delete-button" type:="" button="" id="${res.review.id}">
+                        Delete
+                        </button>
+                    </div>
+
             `
             newDiv.innerHTML = reviewCard
             newDiv.classList.add('card');
             newDiv.classList.add('center')
+            newDiv.id = `card${res.review.id}`
 
             reviewDiv.appendChild(newDiv);
             errorElem.classList.add('hidden')
             reviewForm.reset()
+
+            let deleteButtons = document.querySelectorAll('.delete-button')
+            deleteButtons.forEach(button =>{
+                button.addEventListener('click',async event =>{
+                    let id = event.target.id
+                    let review = document.querySelector(`#card${id}`)
+                    await fetch(`/reviews/${id}/delete`,{
+                        method: 'post',
+                    })
+                    review.remove()
+                })
+            })
+
         }
     })
 })
