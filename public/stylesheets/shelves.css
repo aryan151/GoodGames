@@ -1,3 +1,7 @@
+body {
+    padding-bottom: 50px;
+}
+
 .game-container{
     display: flex;
     box-sizing: border-box;
@@ -9,6 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 30px;
 
 }
 .game-img{
@@ -39,6 +44,11 @@
 
 .game-title:hover {
     text-decoration: underline;
+}
+
+.btn-warning {
+    margin-bottom: 0;
+    margin-top: 20px;
 }
 
 .add-shelf{
