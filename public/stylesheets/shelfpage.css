@@ -15,11 +15,6 @@ main{
     align-items:center;
     text-align: justify;
 }
-h1 {
-	text-transform: uppercase;
-	letter-spacing: 5px;
-	font-size: 22px;
-}
 
 h2:hover {
     text-decoration: underline;
