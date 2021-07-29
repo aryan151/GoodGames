@@ -13,8 +13,9 @@ const router = express.Router();
 router.get('/games', asyncHandler(async (req, res) => {
     const games = await Game.findAll();
 
-    games.forEach(game => {
+    games.forEach(async game => {
         getDate(game)
+        await getAvgRating(game)
     });
 
     res.render('games', { title: 'Games', games })
@@ -32,8 +33,6 @@ router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
         userId = null
     }
 
-
-
     const game = await Game.findByPk(gameId, {
         include: {
             model: Review,
@@ -41,19 +40,10 @@ router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
         }
     });
 
-    const reviews = await Review.findAll({
-        raw: true,
-        where: {
-            gameId
-        },
-        attributes: [[sequelize.fn('AVG', sequelize.col('rating')), 'avg']]
-    })
-
-    console.log(reviews[0].avg);
-
     getDate(game);
+    await getAvgRating(game);
 
-    game.avg = Number(reviews[0].avg).toFixed(2)
+
 
     res.render('game-page', { title: `Game - ${game.title}`, game, userId})
 }))
@@ -97,6 +87,18 @@ const getDate = (game) => {
     const day = date.getDay() + 1
     const year = date.getFullYear();
     game.date = `${month}/${day}/${year}`
+}
+
+const getAvgRating = async (game) => {
+    const reviews = await Review.findAll({
+        raw: true,
+        where: {
+            gameId: game.id
+        },
+        attributes: [[sequelize.fn('AVG', sequelize.col('rating')), 'avg']]
+    })
+
+    game.avg = Number(reviews[0].avg).toFixed(2)
 }
 
 router.post('/search', asyncHandler(async (req, res) => {
