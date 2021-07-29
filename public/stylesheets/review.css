@@ -6,15 +6,6 @@
     font-family:"Roboto Condensed", Arial, Helvetica, sans-serif;
     box-sizing: border-box;
 } */
-footer{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-footer a:hover{
-    color: #fd0d7d;
-}
 
 main {
     display: flex;
@@ -66,15 +57,15 @@ main {
       font-style: italic;
   } */
 
-/* #top-link {
+#top-link {
     text-align: center;
-} */
-/* #scroll-top {
+}
+#scroll-top {
     margin-top: 15px;
-} */
-/* #scroll-top > a:hover {
+}
+#scroll-top > a:hover {
     color: #fd0d7d;
-} */
+}
 
 .games-link {
     margin: 0 auto;

@@ -18,5 +18,7 @@ block content
                   a(href = `/reviews/${review.id}`)
                      button.btn.btn-primary(type: "button") Edit
                   button.btn.btn-warning.delete-button(type: "button" id = `${review.id}`) Delete
-   include return-top
+      div(id="scroll-top")
+         a(href= "#top") return to top
+               //- a(href= `/games/${review.Game.id}`)= review.Game.title
    script(src="/javascripts/review-delete-button.js" type="module" defer)
