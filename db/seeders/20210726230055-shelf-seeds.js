@@ -20,6 +20,13 @@ module.exports = {
             { userId: 5, name: 'Want to play', createdAt: new Date(), updatedAt: new Date() },
             { userId: 5, name: 'Currently Playing', createdAt: new Date(), updatedAt: new Date() },
             { userId: 5, name: 'Played', createdAt: new Date(), updatedAt: new Date() },
+
+            { userId: 1, name: 'friends are playing', createdAt: new Date(), updatedAt: new Date() },
+            { userId: 1, name: 'never play again', createdAt: new Date(), updatedAt: new Date() },
+            { userId: 1, name: 'management sims', createdAt: new Date(), updatedAt: new Date() },
+            { userId: 2, name: 'maybe...', createdAt: new Date(), updatedAt: new Date() },
+            { userId: 2, name: 'for the kids', createdAt: new Date(), updatedAt: new Date() },
+            { userId: 3, name: 'never play again', createdAt: new Date(), updatedAt: new Date() },
         ], {});
     },
 
