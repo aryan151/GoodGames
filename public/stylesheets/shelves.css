@@ -59,6 +59,18 @@ p.game-title {
     letter-spacing: 1px;
 }
 
+.empty-message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px
+}
+.empty-text:hover{
+    text-decoration: none;
+}
+.games-link:hover {
+    text-decoration: underline;
+}
 .error-container{
     display: flex;
     flex-direction: column;
