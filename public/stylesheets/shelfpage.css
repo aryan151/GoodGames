@@ -21,6 +21,10 @@ h1 {
 	font-size: 22px;
 }
 
+h2:hover {
+    text-decoration: underline;
+}
+
 #shelf-container {
     border-style: solid;
     border-color: #a44200;

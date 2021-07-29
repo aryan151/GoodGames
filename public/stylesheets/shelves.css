@@ -21,11 +21,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 150px;
+    height: 260px;
+    justify-content: space-between;
 }
 .game-title{
     text-align:center;
-
 }
+
+.link-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-title:hover {
+    text-decoration: underline;
+}
+
 .add-shelf{
     display: flex;
     justify-content: center;
@@ -43,16 +58,26 @@ h1 {
     letter-spacing: 5px;
     padding-top: 5px;
 }
+
+h2:hover {
+    text-decoration: underline;
+}
+
+p.game-title {
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
 .error-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
 
-  .error li{
+.error li{
     /* display: flex;
     flex-direction: column; */
     color:red;
     list-style-position: inside;
     text-align: center;
-  }
+}
