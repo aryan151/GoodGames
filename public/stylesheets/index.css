@@ -63,4 +63,10 @@ h2:hover {
     width: 145px;
     border-radius: 10px;
     border: 1px solid;
+    max-height: 260px;
+    overflow-y: scroll;
+}
+
+.shelves::-webkit-scrollbar {
+    display: none;
 }
