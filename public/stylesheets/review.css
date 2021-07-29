@@ -67,13 +67,13 @@ main {
     color: #fd0d7d;
 }
 
-#games-link {
+.games-link {
     margin: 0 auto;
     margin-top: 20px;
     text-align: center;
     font-size: 1.1rem;
 }
 
-#games-link:hover {
+.games-link:hover {
     text-decoration: underline;
 }
