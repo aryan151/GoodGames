@@ -9,12 +9,18 @@ block content
         .card.center.game-card
             a(href=`/shelves/${shelf.id}`): h2.card-title= shelf.name
             .game-container
-                each game, index in shelf.Games
-                    if (index < 3)
-                        .game-info
-                            div.link-container
-                                a(href=`/games/${game.id}`): p.game-title= game.title
-                            img.game-img(src=game.imageURL, alt="")
+                if (shelf.Games.length > 0)
+                    each game, index in shelf.Games
+                        if (index < 3)
+                            .game-info
+                                div.link-container
+                                    a(href=`/games/${game.id}`): p.game-title= game.title
+                                img.game-img(src=game.imageURL, alt="")
+                else
+                    .empty-message
+                        h2.card-title.empty-text This shelf doesnt have any games right now
+                        a.games-link(href = '/')
+                            p Find a Game?
             if (shelf.name != "Played" && shelf.name != "Want to play" && shelf.name != "Currently Playing")
                 form(action=`/shelves/${shelf.id}/delete`, method="post")
                     button.btn.btn-warning(type="submit") Delete Shelf
