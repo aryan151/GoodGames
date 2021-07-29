@@ -88,7 +88,7 @@ a:hover {
 	color:#a44200;
 }
 .search_box:hover .input_box {
-	width: 240px;
+	width: 200px;
 	padding: 0 6px;
 }
 
@@ -99,7 +99,7 @@ a:hover {
 	height: 40px;
 	line-height: 40px;
 	text-align: end;
-	border-radius: 50%;
+	border-radius: 100%;
 
 }
 
@@ -110,18 +110,18 @@ a:hover {
 .small div {
 	width: 25px;
 	height: 2px;
-	background-color: #fff;
+	background-color: #060919;
 	margin: 5px;
 }
 
-@media screen {
+@media screen and (max-width: 1000px) {
 	body {
 		overflow-x: hidden;
 	}
 	.navlist {
 		position: absolute;
 		right: 0px;
-		height: 92vh;
+		height: 50vh;
 		top: 15vh;
 		background-color: #a44200;
 		/* color: #fff; */
