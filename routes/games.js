@@ -13,17 +13,20 @@ const router = express.Router();
 router.get('/games', asyncHandler(async (req, res) => {
     const games = await Game.findAll();
 
-    games.forEach(async game => {
-        getDate(game)
-        await getAvgRating(game)
+    games.forEach(game => {
+
     });
+
+    for (const game of games) {
+        getDate(game)
+        game.avg = await getAvgRating(game)
+    }
 
     res.render('games', { title: 'Games', games })
 }))
 
 router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
     const gameId = req.params.gameId;
-
 
     let userId = 0
 
@@ -41,7 +44,8 @@ router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
     });
 
     getDate(game);
-    await getAvgRating(game);
+    game.avg = await getAvgRating(game);
+    console.log(game)
 
 
 
@@ -98,7 +102,7 @@ const getAvgRating = async (game) => {
         attributes: [[sequelize.fn('AVG', sequelize.col('rating')), 'avg']]
     })
 
-    game.avg = Number(reviews[0].avg).toFixed(2)
+    return Number(reviews[0].avg).toFixed(2)
 }
 
 router.post('/search', asyncHandler(async (req, res) => {
@@ -109,7 +113,17 @@ router.post('/search', asyncHandler(async (req, res) => {
             title: { [Op.iLike]: '%' + term + '%' }
         }
     })
+    
+    for (const game of games) {
+        getDate(game)
+        game.avg = await getAvgRating(game)
+    }
+
+
     res.render('search-result', {Title:`Search Results "${term}"`,games,term})
 }))
 
-module.exports = router;
+module.exports = {
+    router,
+    getAvgRating
+};
