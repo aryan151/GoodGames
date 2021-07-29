@@ -24,8 +24,12 @@
 }
 .game-title{
     text-align:center;
-
 }
+
+.game-title:hover {
+    text-decoration: underline;
+}
+
 .add-shelf{
     display: flex;
     justify-content: center;
