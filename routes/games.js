@@ -21,7 +21,18 @@ router.get('/games', asyncHandler(async (req, res) => {
 
 router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
     const gameId = req.params.gameId;
-    const userId = res.locals.user.id
+
+
+    let userId = 0
+
+    try{
+        userId = res.locals.user.id
+    }catch(e){
+        userId = null
+    }
+
+
+
     const game = await Game.findByPk(gameId, {
         include: {
             model: Review,
