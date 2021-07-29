@@ -24,7 +24,10 @@ block content
                     p= game.description
                 div
                     p.date Published: #{game.date}
-                    p.rating Rating: #{game.avg}
+                    if (game.avg > 0)
+                        p.rating Rating: #{game.avg}
+                    else
+                        p.rating Rating: No rating available
         h2 Reviews
         div.reviews
             for review in game.Reviews
@@ -63,4 +66,5 @@ block content
                     textarea.text-control.text-review(name="content", id="content", cols="30", rows="10")
 
                     button.add-review.btn.btn-primary(type="submit") Submit
+    include return-top.pug
     script(src="/javascripts/review-delete-button.js" type="module" defer)

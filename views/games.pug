@@ -21,4 +21,8 @@ block content
                     p= game.description
                     h6 Published:
                     p= game.date
-                    h5 Rating: #{game.avg}
+                    if (game.avg > 0)
+                        h5 Rating: #{game.avg}
+                    else
+                        h5 Rating: No rating available
+    include return-top.pug
