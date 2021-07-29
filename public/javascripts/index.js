@@ -66,7 +66,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
                     })
 
                     res = await res.json()
-                    console.log(res);
 
                     const { message } = res;
 
