@@ -53,6 +53,11 @@ h2:hover {
     text-decoration: underline;
 }
 
+p.game-title {
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
 .error-container{
     display: flex;
     flex-direction: column;
