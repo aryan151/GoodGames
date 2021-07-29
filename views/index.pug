@@ -12,6 +12,7 @@ block content
             div.inner-container
                 a(href=`/games/${game.id}`): h2.card-title= game.title
                 p= game.description
+                h5 Rating: #{game.avg}
                 form.get-shelves(action="/api/shelves", method="post")
                     input(type="hidden", name="gameId", value=game.id)
                     button.btn.btn-primary(type="submit") add to my shelf

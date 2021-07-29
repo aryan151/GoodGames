@@ -22,6 +22,7 @@ block content
                     p= game.description
                 h5 Published:
                 p= game.date
+                h5 Rating: #{game.avg}
         h2 Reviews
         div.reviews
             for review in game.Reviews

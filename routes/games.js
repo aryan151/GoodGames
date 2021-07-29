@@ -5,6 +5,7 @@ const { Op } = require('sequelize');
 const { asyncHandler } = require('./utils');
 const { Game, Review, User } = require('../db/models');
 const { reviewValidators, jsonValidationHandler } = require('./validators');
+const sequelize = require('sequelize');
 
 
 const router = express.Router();
@@ -13,15 +14,19 @@ router.get('/games', asyncHandler(async (req, res) => {
     const games = await Game.findAll();
 
     games.forEach(game => {
-        getDate(game)
+
     });
+
+    for (const game of games) {
+        getDate(game)
+        game.avg = await getAvgRating(game)
+    }
 
     res.render('games', { title: 'Games', games })
 }))
 
 router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
     const gameId = req.params.gameId;
-
 
     let userId = 0
 
@@ -31,16 +36,18 @@ router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
         userId = null
     }
 
-
-
     const game = await Game.findByPk(gameId, {
         include: {
             model: Review,
-            include: User
+            include: User,
         }
     });
 
     getDate(game);
+    game.avg = await getAvgRating(game);
+    console.log(game)
+
+
 
     res.render('game-page', { title: `Game - ${game.title}`, game, userId})
 }))
@@ -86,6 +93,18 @@ const getDate = (game) => {
     game.date = `${month}/${day}/${year}`
 }
 
+const getAvgRating = async (game) => {
+    const reviews = await Review.findAll({
+        raw: true,
+        where: {
+            gameId: game.id
+        },
+        attributes: [[sequelize.fn('AVG', sequelize.col('rating')), 'avg']]
+    })
+
+    return Number(reviews[0].avg).toFixed(2)
+}
+
 router.post('/search', asyncHandler(async (req, res) => {
     const { term } = req.body
     let games = await Game.findAll({
@@ -94,7 +113,17 @@ router.post('/search', asyncHandler(async (req, res) => {
             title: { [Op.iLike]: '%' + term + '%' }
         }
     })
+    
+    for (const game of games) {
+        getDate(game)
+        game.avg = await getAvgRating(game)
+    }
+
+
     res.render('search-result', {Title:`Search Results "${term}"`,games,term})
 }))
 
-module.exports = router;
+module.exports = {
+    router,
+    getAvgRating
+};
