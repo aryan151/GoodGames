@@ -1,11 +1,23 @@
+h1 {
+    margin: 0;
+}
+
 h2 {
     color: white;
+}
+
+h2.info {
+    /* color: white; */
     margin: 20px auto;
     width: fit-content;
+    font-size: 1.5rem;
+    text-align: left;
+    margin: 0;
 }
 
 .card-title {
     text-align: center;
+    font-size: 1.7rem;
 }
 
 .game-card {
@@ -19,6 +31,11 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
     margin-left: 60px;
+}
+
+.rating, .date {
+    font-size: 1.2rem;
+    margin: 10px 0;
 }
 
 img {
