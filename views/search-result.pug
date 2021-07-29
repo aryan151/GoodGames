@@ -17,7 +17,8 @@ block content
                         img.game-img(src=game.imageURL, alt=`Cover Art for ${game.title}`)
                         form.get-shelves(action="/api/shelves", method="post")
                             input(type="hidden", name="gameId", value=game.id)
-                            button.btn.btn-primary(type="submit") add to my shelf
+                            if locals.authenticated
+                                button.btn.btn-primary(type="submit") add to my shelf
                     .left-side
                         h6 At a Glance:
                         p= game.description
