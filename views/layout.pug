@@ -11,15 +11,14 @@ html
         header
             div(id='navbar-container' class='navbar')
                 <nav>
-                    <div class="logo">
-                        a(href="/", method="post") Good Games
-                    </div>
+                    ul.logoList
+                        .logo
+                            a(href="/", method="post") Good Games
+                        form.search_box(action='/search' method='post')
+                            input#query.input_box(type='search' name='term' placeholder='Find Your Game!')
+                            input.butt(type='submit' value='🔍')
                     if locals.authenticated
                         ul.navlist
-                            li
-                                form(action = '/search', method = 'post')
-                                    input#query(type='search', name='term', placeholder='Find your Game!')
-                                    input(type="submit" value='search')
                             li
                                 a(href="/reviews") My Reviews
                             li
@@ -30,10 +29,6 @@ html
                                 a(href="/about") About
                     else
                         ul.navlist
-                            li
-                                form(action = '/search', method = 'post')
-                                    input#query(type='search', name='term', placeholder='Find your Game!')
-                                    input(type="submit" value='search')
                             li
                                 a(href="/login") Login
                             li
