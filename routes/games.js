@@ -113,7 +113,7 @@ router.post('/search', asyncHandler(async (req, res) => {
             title: { [Op.iLike]: '%' + term + '%' }
         }
     })
-    
+
     for (const game of games) {
         getDate(game)
         game.avg = await getAvgRating(game)
@@ -125,5 +125,6 @@ router.post('/search', asyncHandler(async (req, res) => {
 
 module.exports = {
     router,
-    getAvgRating
+    getAvgRating,
+    getDate,
 };
