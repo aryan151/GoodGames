@@ -109,6 +109,9 @@ select.form-control {
     flex-direction: column;
     align-items: center;
 }
+.error p{
+    color: red;
+}
 
 .error li {
     /* display: flex;
