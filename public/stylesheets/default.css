@@ -151,3 +151,18 @@ p {
 .card-sub-title {
     font-size: 1.2rem;
 }
+
+/******************/
+/*     Footer     */
+/******************/
+
+footer{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+footer a:hover{
+    color: #fd0d7d;
+}
