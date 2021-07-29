@@ -9,16 +9,23 @@ block content
     main
         p= gameshelf.User.username
         h1= gameshelf.name
-        each game in gameshelf.Games
-                div.card.game-card
-                    .right-side
-                        h2: a(href=`/games/${game.id}`) #{game.title}
-                        img.game-img(src=game.imageURL, alt=`Cover Art for ${game.title}`)
-                        form(action=`/games/${game.id}/delete`, method="post")
-                            input(type="hidden" name="shelfId", value=gameshelf.id)
-                            button.btn.btn-warning(type="submit") Remove From Shelf
-                    .left-side
-                        h6 At a Glance:
-                        p= game.description
-                        h6 Published:
-                        p= game.releaseDate
+        if(gameshelf.Games)
+            each game in gameshelf.Games
+                    div.card.game-card
+                        .right-side
+                            h2: a(href=`/games/${game.id}`) #{game.title}
+                            img.game-img(src=game.imageURL, alt=`Cover Art for ${game.title}`)
+                            form(action=`/games/${game.id}/delete`, method="post")
+                                input(type="hidden" name="shelfId", value=gameshelf.id)
+                                button.btn.btn-warning(type="submit") Remove From Shelf
+                        .left-side
+                            h6 At a Glance:
+                            p= game.description
+                            h6 Published:
+                            p= game.releaseDate
+            else
+                .card
+                    .empty-message
+                            h2.card-title.empty-text This shelf doesnt have any games right now
+                            a.games-link(href = '/')
+                                p Find a Game?
