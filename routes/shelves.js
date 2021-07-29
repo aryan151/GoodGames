@@ -7,6 +7,7 @@ const { shelfValidator } = require('./validators');
 const { UserShelf, Game, GamesToShelf, User } = require('../db/models');
 const { requireAuth } = require('../auth');
 const { asyncHandler, csrfProtection } = require('./utils');
+const { Op } = require('sequelize');
 
 router.use(requireAuth)
 
@@ -48,12 +49,24 @@ router.post('/api/shelves/:shelfId/games/:gameId', asyncHandler(async (req, res,
     const shelfId = req.params.shelfId
     const gameId = req.params.gameId
 
+    const shelf = await UserShelf.findByPk(shelfId)
     const game = await Game.findByPk(gameId);
 
-    game.addUserShelves(shelfId);
+    const alreadyExist = await GamesToShelf.findAll({
+        where: {
+            [Op.and]: [{userShelfId: shelfId, gameId}]
+        }
+    })
 
-    const shelf = await UserShelf.findByPk(shelfId)
-    res.status(201).json({ message: `${game.title} was added to: ${shelf.name}`})
+    if (!alreadyExist.length) {
+        game.addUserShelves(shelfId);
+
+        res.status(201).json({ message: `${game.title} was added to: ${shelf.name}`})
+        return;
+    } else {
+        res.status(200).json({ message: `${game.title} already exists on your ${shelf.name} shelf.`})
+    }
+
 }));
 
 

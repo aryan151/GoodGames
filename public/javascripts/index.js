@@ -73,7 +73,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                     notification.innerText = message;
                     notification.style.position = 'fixed';
-                    notification.style.top = '50px';
+                    notification.style.top = '75px';
                     notification.style.left = '0px';
                     notification.style.padding = '10px';
                     notification.style.backgroundColor = '#6d98ba';
@@ -81,7 +81,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                     body.appendChild(notification);
 
-                    setTimeout(() => notification.remove(), 5000)
+                    setTimeout(() => notification.remove(), 3000)
 
                 })
             })
