@@ -14,6 +14,7 @@ router.get('/reviews', requireAuth, asyncHandler(async (req,res,next)=>{
 
     let reviews = await Review.findAll({
         where: {userId},
+        order: [['createdAt', 'DESC']],
         include:[
             {model: Game},
             {model: User}
