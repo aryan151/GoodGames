@@ -7,12 +7,11 @@
     box-sizing: border-box;
 } */
 
-
-main{
+main {
     display: flex;
     flex-direction: column;
-    margin:30px;
-    align-items:center;
+    margin: 30px;
+    align-items: center;
     text-align: justify;
 }
 
@@ -25,12 +24,12 @@ main{
     border-radius: 5px;
 } */
 
-.review-content{
+.review-content {
     padding-bottom: 10px;
     border-bottom: 1px solid rgb(32, 30, 30);
     line-height: 19px;
 }
-.review-buttons{
+.review-buttons {
     display: flex;
     justify-content: flex-end;
 }
@@ -50,41 +49,31 @@ main{
     text-justify: center;
   } */
 
-  .content-header{
-      margin-top:30px;
-  }
+.content-header {
+    margin-top: 30px;
+}
 
-  /* .card h3{
+/* .card h3{
       font-style: italic;
   } */
 
+#top-link {
+    text-align: center;
+}
+#scroll-top {
+    margin-top: 15px;
+}
+#scroll-top > a:hover {
+    color: #fd0d7d;
+}
 
-  #top-link{
-      text-align: center;
-  }
-  #scroll-top{
-      margin-top: 15px;
-  }
-  #scroll-top > a:hover{
-      color: #fd0d7d;
-  }
+#games-link {
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
 
-  #games-link{
-      margin: 0 auto;
-      margin-top: 20px;
-      text-align: center;
-      font-size: 1.1rem;
-  }
-
-  #games-link:hover{
+#games-link:hover {
     text-decoration: underline;
-
-  }
-  h1 {
-    display: flex;
-    justify-content: center;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    padding-top: 5px;
 }
