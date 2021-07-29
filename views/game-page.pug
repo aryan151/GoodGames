@@ -18,11 +18,12 @@ block content
             div.inner-container
                 div
                     h1.card-title= game.title
-                    h5 At a Glance:
+                div
+                    h2.info At a Glance:
                     p= game.description
-                h5 Published:
-                p= game.date
-                h5 Rating: #{game.avg}
+                div
+                    p.date Published: #{game.date}
+                    p.rating Rating: #{game.avg}
         h2 Reviews
         div.reviews
             for review in game.Reviews
