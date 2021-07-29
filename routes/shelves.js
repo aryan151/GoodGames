@@ -8,6 +8,7 @@ const { UserShelf, Game, GamesToShelf, User } = require('../db/models');
 const { requireAuth } = require('../auth');
 const { asyncHandler, csrfProtection } = require('./utils');
 const { Op } = require('sequelize');
+const { getDate } = require('./games');
 
 router.use(requireAuth)
 
@@ -124,6 +125,10 @@ router.get('/shelves/:id', asyncHandler(async (req, res, next) => {
     const gameshelf = await UserShelf.findByPk(shelfId, {
         include: [Game, User],
     });
+
+    for (const game of gameshelf.Games){
+        getDate(game)
+    }
 
     res.render('shelf-page', { gameshelf })
 }))
