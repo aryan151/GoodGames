@@ -8,7 +8,7 @@ const navslide = () => {
 		//move nav bar in sight
 		nav.classList.toggle('nav-active')
 
-		//animate navbar links - going to fix 
+		//animate navbar links - going to fix
 		navlist.forEach(link, index => {
 
 		if (link.style.animation) {
