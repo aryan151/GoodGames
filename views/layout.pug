@@ -14,9 +14,9 @@ html
                     ul.logoList
                         .logo
                             a(href="/", method="post") Good Games
-                        form.search_box(action='/search' method='post')
-                            input#query.input_box(type='search' name='term' placeholder='Find Your Game!')
-                            input.butt(type='submit' value='🔍')
+                    form.search_box(action='/search' method='post')
+                        input#query.input_box(type='search' name='term' placeholder='Find Your Game!')
+                        input.butt(type='submit' value='🔍')
                     if locals.authenticated
                         ul.navlist
                             li
@@ -37,5 +37,9 @@ html
                                 a(href="/demo" id="demo") Demo
                             li
                                 a(href="/about") About
+                        .small
+                            .line1
+                            .line2
                 </nav>
+            script(src='/javascripts/slider.js' type="module" defer)
         block content

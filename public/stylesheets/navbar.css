@@ -3,13 +3,16 @@
     padding: 0px;
     box-sizing: border-box;
 }
-
+body {
+    background-color: #060919;
+}
 nav {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	min-height: 8vh;
 	background-color: #a44200;
+	padding: 5px;
 }
 .logo{
 	display: flex;
@@ -26,7 +29,7 @@ nav {
 
 .logoList {
 	display: flex;
-	justify-content: space-around;
+	justify-content: right;
 	width: 40%;
 }
 
@@ -37,6 +40,7 @@ nav {
 }
 .navlist li{
 	list-style: none;
+	color: #fff;
 }
 a {
 	text-decoration: none;
@@ -86,4 +90,80 @@ a:hover {
 .search_box:hover .input_box {
 	width: 240px;
 	padding: 0 6px;
+}
+
+.search_box:hover .butt {
+	background-color: #060919;
+	text-decoration: none;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: end;
+	border-radius: 50%;
+
+}
+
+.small {
+	display: none;
+}
+
+.small div {
+	width: 25px;
+	height: 2px;
+	background-color: #fff;
+	margin: 5px;
+}
+
+@media screen {
+	body {
+		overflow-x: hidden;
+	}
+	.navlist {
+		position: absolute;
+		right: 0px;
+		height: 92vh;
+		top: 15vh;
+		background-color: #a44200;
+		/* color: #fff; */
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		width: 50%;
+		transform: translateX(100%);
+		transition: transform 0.5s ease-in;
+	}
+
+	.navlist li {
+		/* opacity: 0; */
+		color: #fff;
+	}
+	.small {
+		display: block;
+		cursor:pointer;
+	}
+
+}
+
+@keyframes navListFade {
+	from {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+
+
+
+.toggle .line1 {
+	transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2 {
+	transform: rotate(45deg) translate(-5px,-6px);
+}
+
+.nav-active {
+	transform: translateX(0%);
 }
