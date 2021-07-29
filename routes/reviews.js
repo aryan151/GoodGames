@@ -14,7 +14,7 @@ router.get('/reviews', requireAuth, asyncHandler(async (req,res,next)=>{
 
     let reviews = await Review.findAll({
         where: {userId},
-        order: [['createdAt', 'DESC']],
+        order: [['updatedAt', 'DESC']],
         include:[
             {model: Game},
             {model: User}
@@ -63,7 +63,7 @@ router.post('/reviews/:id(\\d+)/edit', reviewEditValidators ,asyncHandler(async 
     review.content = content
     review.rating = rating
     review.save()
-    res.redirect(redirectTarget)
+    res.redirect('/reviews')
 }))
 
 router.post('/reviews/:id(\\d+)/delete', asyncHandler(async (req,res,next)=>{
