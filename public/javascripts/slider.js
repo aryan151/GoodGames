@@ -15,7 +15,7 @@ const navslide = () => {
 		if (link.style.animation) {
 			link.style.animation = '';
 		} else {
-			link.style.animation = `navListFade 1s ease forwards ${index/7+1}s`  //transition timing
+			link.style.animation = `navListFade 1s ease forwards ${index/7+0}s`  //transition timing
 		}
 		})
 		small.classList.toggle('toggle')
