@@ -46,7 +46,7 @@ router.post('/api/shelves', asyncHandler(async (req, res, next) => {
 }));
 
 // ADD GAME TO SHELF
-router.post('/api/shelves/:shelfId/games/:gameId', asyncHandler(async (req, res, next) => {
+router.post('/api/shelves/:shelfId(\\d+)/games/:gameId(\\d+)', asyncHandler(async (req, res, next) => {
     const shelfId = req.params.shelfId
     const gameId = req.params.gameId
 
@@ -103,7 +103,7 @@ router.post('/shelves', csrfProtection ,shelfValidator, asyncHandler(async (req,
 }))
 
 // DELETE SHELF
-router.post('/shelves/:id/delete', asyncHandler(async (req, res) => {
+router.post('/shelves/:id(\\d+)/delete', asyncHandler(async (req, res) => {
     const shelfId = parseInt(req.params.id, 10);
 
     const shelfToDelete = await UserShelf.findByPk(shelfId);
@@ -119,7 +119,7 @@ router.post('/shelves/:id/delete', asyncHandler(async (req, res) => {
 
 
 // GET SINGLE SHELF
-router.get('/shelves/:id', asyncHandler(async (req, res, next) => {
+router.get('/shelves/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const shelfId = parseInt(req.params.id, 10);
 
     const gameshelf = await UserShelf.findByPk(shelfId, {
