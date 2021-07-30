@@ -36,20 +36,31 @@ GoodGames is a web application that allows users to view a library of video game
 ***
 
 ### Key Features
-- Bcryptjs library to secure authentication (w/ Demo User) & prevent csrf attacks
+- Bcryptjs library to secure authentication (w/ Demo User) to ensure user security
+- CSRUF library used to prevent csrf attacks
+- Session cookies used to authorize users when trying to view shelves and read/update their reviews
 - Logged in users can create own reviews, store games in shelves and add their own shelves.
-- AJAX is used to asynchronously render elements (i.e. adding a review)
+- AJAX is used to asynchronously render elements (e.g. adding a review, presenting list of shelves)
 
 ***
 
 ### Code Snippets
 #### Example 1
 
-code #1
+Retrieve average rating for review using sequelize attribute aggregation:
 
 ````javascript
-//example code here
+const getAvgRating = async (game) => {
+    const reviews = await Review.findAll({
+        raw: true,
+        where: {
+            gameId: game.id
+        },
+        attributes: [[sequelize.fn('AVG', sequelize.col('rating')), 'avg']]
+    })
 
+    return Number(reviews[0].avg).toFixed(2)
+}
 ````
 
 ### Wiki Pages
