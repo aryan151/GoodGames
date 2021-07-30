@@ -9,8 +9,17 @@ const logHistory = (req, res, next) => {
         history = history.slice(0,3)
         req.session.history = history
     }
+
+
     const url = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
+
+    if(url.includes('api')){
+      next()
+      return
+    }
+
     history.unshift(url);
+    console.log(history)
     next();
   };
 
