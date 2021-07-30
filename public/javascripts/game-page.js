@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', event => {
     const reviewForm = document.querySelector('.add-review')
     const reviewDiv = document.querySelector('.reviews')
-
+    let docBody = document.querySelector('body')
     if(!reviewForm){
         return
     }
@@ -65,15 +65,50 @@ window.addEventListener('DOMContentLoaded', event => {
             let deleteButtons = document.querySelectorAll('.delete-button')
             deleteButtons.forEach(button =>{
                 button.addEventListener('click',async event =>{
-                    let id = event.target.id
-                    let review = document.querySelector(`#card${id}`)
-                    await fetch(`/reviews/${id}/delete`,{
-                        method: 'post',
+
+                    event.stopPropagation()
+                    const alreadyDisplayed = document.querySelector('.delete-popup');
+
+                    if (document.body.contains(alreadyDisplayed)) {
+                        alreadyDisplayed.remove()
+                    }
+
+                    let container = event.target.parentElement
+
+
+                    let popup = document.createElement('div')
+                    let popupHeader = document.createElement('h2')
+                    popupHeader.innerText = `Are you sure you want to delete`
+                    let popupButton = document.createElement('button')
+                    popupHeader.classList.add('card-title')
+                    popupButton.classList.add('btn','btn-warning')
+                    popupButton.innerText = 'Delete'
+                    popupButton.dataset.target = event.target.id
+                    popup.classList.add('card','center','delete-popup')
+
+                    popupButton.addEventListener('click', async event => {
+                        let id = event.target.dataset.target
+                        let review = document.querySelector(`#card${id}`)
+                        await fetch(`/reviews/${id}/delete`,{
+                            method: 'post',
+                        })
+                        review.remove()
+                        popup.remove()
                     })
-                    review.remove()
+
+                    popup.appendChild(popupHeader)
+                    popup.appendChild(popupButton)
+                    container.appendChild(popup)
+
                 })
             })
-
         }
     })
+    docBody.addEventListener('click', event => {
+        const alreadyDisplayed = document.querySelector('.delete-popup');
+        if (document.body.contains(alreadyDisplayed)) {
+            alreadyDisplayed.remove()
+        }
+    })
+
 })
