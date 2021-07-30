@@ -111,7 +111,7 @@ router.post('/shelves/:id/delete', asyncHandler(async (req, res) => {
     const standardtitle = ['Want to play', 'Currently Playing', 'Played']
 
     if (!standardtitle.includes(shelfToDelete.name))  {
-            shelfToDelete.destroy();
+            await shelfToDelete.destroy();
     }
 
     res.redirect('/shelves');
