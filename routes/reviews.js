@@ -55,7 +55,6 @@ router.post('/reviews/:id(\\d+)/edit', reviewEditValidators ,asyncHandler(async 
 
     if (!validationErrors.isEmpty()) {
         const errors = validationErrors.array().map(error => error.msg);
-        console.log(errors)
         // res.render('review-edit', { title: 'Edit Review', review,  errors })
         return;
     }

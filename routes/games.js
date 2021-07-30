@@ -45,9 +45,6 @@ router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
 
     getDate(game);
     game.avg = await getAvgRating(game);
-    console.log(game)
-
-
 
     res.render('game-page', { title: `Game - ${game.title}`, game, userId})
 }))
@@ -55,7 +52,6 @@ router.get('/games/:gameId(\\d+)', asyncHandler(async (req, res) => {
 router.post('/api/games/:gameId(\\d+)/reviews', reviewValidators, jsonValidationHandler, asyncHandler(async (req, res) => {
     // this route will only be hit by our front end javascript file
     // will create a new review and return the new review
-    console.log('hit this route')
     const userId = res.locals.user.id
     const user = await User.findByPk(userId);
 
