@@ -48,7 +48,14 @@ router.post('/reviews/:id(\\d+)/edit', reviewEditValidators ,asyncHandler(async 
 
 
 
-    let redirectTarget = history[2].split('http://localhost:8080')[1]
+    let previousUrl = history[2].split('/')
+    let lastPart = previousUrl[previousUrl.length - 1]
+    let redirectTarget
+    if(parseInt(lastPart)){
+        redirectTarget = `/games/${lastPart}`
+    }else{
+        redirectTarget = `/${lastPart}`
+    }
 
 
     const validationErrors = validationResult(req)
@@ -62,7 +69,7 @@ router.post('/reviews/:id(\\d+)/edit', reviewEditValidators ,asyncHandler(async 
     review.content = content
     review.rating = rating
     review.save()
-    res.redirect('/reviews')
+    res.redirect(redirectTarget)
 }))
 
 router.post('/reviews/:id(\\d+)/delete', asyncHandler(async (req,res,next)=>{
