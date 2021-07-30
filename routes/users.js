@@ -26,7 +26,6 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
 
     if (!validationErrors.isEmpty()) {
         const errors = validationErrors.array().map(error => error.msg);
-        console.log(errors)
         res.render('sign-up', { title: 'Sign Up', user, csrfToken: req.csrfToken(), errors })
         return;
     }
@@ -104,7 +103,6 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
         errors = validationErrors.array().map(error => error.msg);
     }
 
-    console.log(errors)
     res.render('login', { title: 'Login', email, csrfToken: req.csrfToken(), errors })
 }));
 
