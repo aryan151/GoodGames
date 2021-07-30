@@ -90,3 +90,17 @@ img {
     font-weight: normal;
     margin-bottom: 0px;
 }
+
+.delete-popup{
+    position: absolute;
+    top:10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    right: 15%;
+    align-self: flex-start;
+}
+.review-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
