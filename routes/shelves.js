@@ -26,7 +26,7 @@ router.get('/shelves', csrfProtection, asyncHandler(async (req, res, next) => {
             model: Game
         }],
         order: [
-            [{model: Game}, 'title']
+            ['updatedAt', 'DESC']
         ]
     })
     res.render('shelves', { title: 'Your Shelves', shelves , csrfToken:req.csrfToken()});
