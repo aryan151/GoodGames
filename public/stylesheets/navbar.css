@@ -30,6 +30,7 @@ nav {
 .logoList {
 	display: flex;
 	justify-content: right;
+	padding: 10px 30px;
 	width: 40%;
 }
 
@@ -57,6 +58,7 @@ a:hover {
 	background-color: white;
 	border-radius: 40px;
 	padding: 10px;
+	height: 40px;
 }
 
 .input_box {
@@ -88,7 +90,7 @@ a:hover {
 	color:#a44200;
 }
 .search_box:hover .input_box {
-	width: 200px;
+	width: 150px;
 	padding: 0 6px;
 }
 
@@ -110,7 +112,7 @@ a:hover {
 .small div {
 	width: 25px;
 	height: 2px;
-	background-color: #060919;
+	background-color: #fff;
 	margin: 5px;
 }
 
@@ -122,9 +124,8 @@ a:hover {
 		position: absolute;
 		right: 0px;
 		height: 50vh;
-		top: 15vh;
+		top: 25vh;
 		background-color: #a44200;
-		/* color: #fff; */
 		display: flex;
 		align-items: center;
 		flex-direction: column;
@@ -134,14 +135,18 @@ a:hover {
 	}
 
 	.navlist li {
-		/* opacity: 0; */
-		color: #fff;
+		opacity: 0;
 	}
+
 	.small {
 		display: block;
 		cursor:pointer;
 	}
 
+}
+
+.nav-active {
+	transform: translateX(0%);
 }
 
 @keyframes navListFade {
@@ -161,9 +166,11 @@ a:hover {
 	transform: rotate(-45deg) translate(-5px,6px);
 }
 .toggle .line2 {
+	opacity: 0;
+}
+.toggle .line3 {
 	transform: rotate(45deg) translate(-5px,-6px);
 }
-
-.nav-active {
-	transform: translateX(0%);
+.toggle .line4 {
+	opacity: 0;
 }
