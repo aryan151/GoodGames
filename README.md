@@ -63,6 +63,28 @@ const getAvgRating = async (game) => {
 }
 ````
 
+#### Example 2
+
+Redirect to previous page after editing a review using express sessions
+
+````javascript
+    let {history} = req.session
+    let previousUrl = history[2].split('/')
+    let lastPart = previousUrl[previousUrl.length - 1]
+    let redirectTarget
+    if(parseInt(lastPart)){
+        redirectTarget = `/games/${lastPart}`
+    }else{
+        redirectTarget = `/${lastPart}`
+    }
+    
+    //code omitted for brevity
+    
+    res.redirect(redirectTarget)
+    
+    
+    
+````
 ### Wiki Pages
 #### [API Documentation](https://github.com/aryan151/GoodGames/wiki/API-Route-Documentation)
 #### [Database Schema](https://github.com/aryan151/GoodGames/wiki/Database-Schema)
