@@ -129,6 +129,7 @@ a:hover {
 		align-items: center;
 		flex-direction: column;
 		width: 50%;
+		z-index: 1;
 		transform: translateX(100%);
 		transition: transform 0.5s ease-in;
 	}
