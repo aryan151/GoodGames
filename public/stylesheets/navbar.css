@@ -68,7 +68,7 @@ a:hover {
 	padding: 0;
 	color: #a44200;
 	font-size: 16px;
-	transition: 01s all;
+	transition: 1s all;
 	line-height: 40px;
 	width: 0;
 }
@@ -90,7 +90,7 @@ a:hover {
 }
 .search_box:hover .input_box {
 	width: 150px;
-	padding: 0 6px;
+	padding: 0 4px;
 }
 
 .search_box:hover .butt {
@@ -108,14 +108,8 @@ a:hover {
 	display: none;
 }
 
-.small div {
-	width: 25px;
-	height: 2px;
-	background-color: #fff;
-	margin: 5px;
-}
-
-@media screen and (max-width: 1000px) {
+/* Morph Navbar when screen is smaller size */
+@media screen and (max-width: 1500px) {
 	body {
 		overflow-x: hidden;
 	}
@@ -129,18 +123,17 @@ a:hover {
 		align-items: center;
 		flex-direction: column;
 		width: 50%;
-		z-index: 1;
 		transform: translateX(100%);
 		transition: transform 0.5s ease-in;
 	}
-
-	.navlist li {
-		opacity: 0;
-	}
-
 	.small {
-		display: block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		cursor:pointer;
+		width: 40px;
+		height: 40px;
+
 	}
 
 }
@@ -149,6 +142,7 @@ a:hover {
 	transform: translateX(0%);
 }
 
+/* Small Menu animation */
 @keyframes navListFade {
 	from {
 		opacity: 0;
@@ -158,22 +152,4 @@ a:hover {
 		opacity: 1;
 		transform: translateX(0px);
 	}
-}
-
-
-
-.toggle .line1 {
-	transform: rotate(-45deg) translate(-5px,6px);
-}
-.toggle .line2 {
-	opacity: 0;
-}
-.toggle .line3 {
-	transform: rotate(45deg) translate(-5px,-6px);
-}
-.toggle .line4 {
-	opacity: 0;
-}
-.toggle .line5 {
-	opacity: 0;
 }
