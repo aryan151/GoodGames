@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('GamesTags', {
+    return queryInterface.createTable('GamesGenres', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,7 +11,7 @@ module.exports = {
       gameId: {
         type: Sequelize.INTEGER
       },
-      tagId: {
+      genreId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -25,6 +25,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('GamesTags');
+    return queryInterface.dropTable('GamesGenres');
   }
 };

@@ -16,10 +16,10 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.TEXT
             },
-            tagId: {
+            genreId: {
                 allowNull: false,
                 type: Sequelize.INTEGER,
-                references: {model: 'Tags'}
+                references: {model: 'Genres'}
             },
             releaseDate: {
                 allowNull: false,

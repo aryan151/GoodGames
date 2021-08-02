@@ -1,11 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const GamesTags = sequelize.define('GamesTags', {
+  const GamesGenres = sequelize.define('GamesGenres', {
     gameId: DataTypes.INTEGER,
     tagId: DataTypes.INTEGER
   }, {});
-  GamesTags.associate = function(models) {
+  GamesGenres.associate = function(models) {
     // associations can be defined here
   };
-  return GamesTags;
+  return GamesGenres;
 };
