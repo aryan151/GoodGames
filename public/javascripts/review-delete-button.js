@@ -40,6 +40,7 @@ window.addEventListener('DOMContentLoaded', event => {
             }
 
             let container = event.target.parentElement.parentElement
+            console.log(container)
 
             let popup = document.createElement('div')
             let popupHeader = document.createElement('h2')
