@@ -10,6 +10,9 @@ const sequelize = require('sequelize');
 
 const router = express.Router();
 
+
+
+
 router.get('/games', asyncHandler(async (req, res) => {
     const games = await Game.findAll({include: {model: Genre}});
 
@@ -82,7 +85,10 @@ router.post('/games/:gameId(\\d+)/delete', asyncHandler(async (req, res) => {
 
 
 const getDate = (game) => {
+    console.log('original',game.releaseDate)
     const date = new Date(game.releaseDate);
+    console.log('New' , date)
+
     const month = date.getMonth();
     const day = date.getDay() + 1
     const year = date.getFullYear();

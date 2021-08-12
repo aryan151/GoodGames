@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    up: (queryInterface, Sequelize) => {
+    up: async (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert('Reviews', [
         { content: 'This is the best game ever! It has a large world, great graphics, ( some ) hard puzzles and it brought, like all Zelda games, something new in the Zelda series and in the gaming world.', userId: 1, gameId: 1, createdAt: new Date(), updatedAt: new Date(), rating: 5 },
         { content: 'This Zelda adventure will undoubtedly withstand the test of time and take its place as one of the best games to ever grace a home system.', userId: 2, gameId: 1, createdAt: new Date(), updatedAt: new Date(), rating: 4 },
