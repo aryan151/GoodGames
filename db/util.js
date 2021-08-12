@@ -39,7 +39,7 @@ const fakerTest = (num) => {
         console.log(faker.lorem.paragraph())
     }
 }
-fakerTest(23)
+// fakerTest(23)
 
 const genGenre = async () =>{
 
@@ -143,5 +143,18 @@ const genGames = async (games) =>{
     return gamesAndGenres
 }
 
+const getWiki = async (title) =>{
+    let res = await fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrlimit=20&prop=extracts&exintro&explaintext&exlimit=max&format=json&gsrsearch=${title}`)
+    let data = await res.json()
+    let goodResults  = {}
+    let pages = data.query.pages
+    for(let page in pages){
 
-module.exports = {genUser ,genGenre ,getGames, GameSeed, genGames}
+        if(pages[page].title.toLowerCase().includes(title.toLowerCase())){
+            goodResults[pages[page].title] = (pages[page].extract.split('\n'))
+        }
+    }
+    return goodResults
+}
+
+module.exports = {genUser ,genGenre ,getGames,  genGames}
