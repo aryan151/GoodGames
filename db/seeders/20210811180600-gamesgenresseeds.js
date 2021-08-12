@@ -8,7 +8,7 @@ module.exports = {
       {gameId:1,genreId:10,createdAt: new Date(), updatedAt: new Date()},
 
       {gameId:2,genreId:9,createdAt: new Date(), updatedAt: new Date()},
-      {gameId:2,genreId:3,createdAt: new Date(), updatedAt: new Date()},
+      {gameId:2,genreId:4,createdAt: new Date(), updatedAt: new Date()},
 
       {gameId:3,genreId:5,createdAt: new Date(), updatedAt: new Date()},
 
@@ -20,13 +20,13 @@ module.exports = {
       {gameId:5,genreId:5,createdAt: new Date(), updatedAt: new Date()},
 
 
-      {gameId:6,genreId:1,createdAt: new Date(), updatedAt: new Date()},
+      {gameId:6,genreId:2,createdAt: new Date(), updatedAt: new Date()},
       {gameId:6,genreId:9,createdAt: new Date(), updatedAt: new Date()},
 
       {gameId:7,genreId:10,createdAt: new Date(), updatedAt: new Date()},
 
 
-      {gameId:8,genreId:3,createdAt: new Date(), updatedAt: new Date()},
+      {gameId:8,genreId:4,createdAt: new Date(), updatedAt: new Date()},
       {gameId:8,genreId:5,createdAt: new Date(), updatedAt: new Date()},
 
       {gameId:9,genreId:9,createdAt: new Date(), updatedAt: new Date()},
@@ -37,11 +37,11 @@ module.exports = {
       {gameId:10,genreId:5,createdAt: new Date(), updatedAt: new Date()},
 
 
-      {gameId:11,genreId:1,createdAt: new Date(), updatedAt: new Date()},
+      {gameId:11,genreId:2,createdAt: new Date(), updatedAt: new Date()},
       {gameId:11,genreId:7,createdAt: new Date(), updatedAt: new Date()},
 
 
-      {gameId:12,genreId:1,createdAt: new Date(), updatedAt: new Date()},
+      {gameId:12,genreId:2,createdAt: new Date(), updatedAt: new Date()},
       {gameId:12,genreId:7,createdAt: new Date(), updatedAt: new Date()},
 
 
