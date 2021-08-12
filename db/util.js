@@ -121,17 +121,6 @@ const getGames = async () =>{
     return allGames
 }
 
-class GameSeed {
-    constructor(title,description,releaseDate,imageId){
-        this.title = title;
-        this.description = description;
-        this.releaseDate = new Date(releaseDate);
-        this.imageURL = `https://images.igdb.com/igdb/image/upload/t_cover_big/${imageId}.jpg`;
-        this.createdAt = new Date();
-        this.updatedAt = new Date();
-    }
-}
-
 const genGames = async (games) =>{
     let gamesAndGenres = [[],[]]
     games.forEach(async (game,i) => {
