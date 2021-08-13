@@ -64,11 +64,16 @@ const genReviews = async () =>{
 
         let reviewContent = result[gameId]
         if(reviewContent){
-        for(let text of reviewContent){
+        for(let text, i of reviewContent){
 
             let userId = parseInt(assignRandomReview(users))
             let content = text
-            let rating =  Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+
+            let rating =  (Math.floor(Math.random() * (5 - 1 + 1)) + 1);
+
+            if(i%2 === 0 && rating < 5){
+                rating = rating + 1
+            }
             if(content){
 
             reviews.push({userId, content, gameId :parseInt(gameId), createdAt: new Date(), updatedAt: new Date(), rating})
