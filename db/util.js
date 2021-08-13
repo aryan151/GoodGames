@@ -142,19 +142,119 @@ const genGames = async (games) =>{
     })
     return gamesAndGenres
 }
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
-const getWiki = async (title) =>{
-    let res = await fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrlimit=20&prop=extracts&exintro&explaintext&exlimit=max&format=json&gsrsearch=${title}`)
-    let data = await res.json()
+
+const getWiki = async (title , gameId) =>{
+
+    await sleep(1000);
+    let res = await fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrlimit=1&prop=extracts&exintro&explaintext&exlimit=max&format=json&gsrsearch=${title.trim()}`,{
+        headers: {
+            'Accept': 'application/json'
+        },
+    })
     let goodResults  = {}
-    let pages = data.query.pages
-    for(let page in pages){
+    let data
+    try{
+        console.log('try parse')
+        data = await res.json()
+        console.log(res.url)
+        let pages = data.query.pages
+        for(let page in pages){
 
-        if(pages[page].title.toLowerCase().includes(title.toLowerCase())){
-            goodResults[pages[page].title] = (pages[page].extract.split('\n'))
+            if(true){
+                goodResults[gameId] = (pages[page].extract.split('\n'))
+            }
         }
+    }catch(e){
+     console.log('woops')
+     console.log(res.url)
     }
+
     return goodResults
 }
 
-module.exports = {genUser ,genGenre ,getGames,  genGames}
+// let dummy = `Super Mario World *
+// Suikoden II *
+// Super Metroid *
+// The Legend of Zelda: A Link to the Past *
+// System Shock *
+// Ratchet & Clank: Rift Apart *
+// Day of the Tentacle *
+// Xenogears *
+// Zool *
+// Toonstruck *
+// Sid Meier's Alpha Centauri *
+// Fallout 2 *
+// System Shock 2 *
+// Master of Orion II: Battle at Antares *
+// StarCraft: Brood War *
+// Might and Magic VI: The Mandate of Heaven *
+// Baldur's Gate II: Shadows of Amn *
+// Monkey Island 2: LeChuck's Revenge *
+// Heroes of Might and Magic III: The Restoration of Erathia *
+// Phantasy Star IV: The End of the Millennium *
+// Indiana Jones and the Fate of Atlantis *
+// Wasteland *
+// Dune II: The Building of a Dynasty *
+// Heroes of Might and Magic III: Complete *
+// Dungeon Master *
+// Ridge Racer Type 4 *
+// Wing Commander *
+// Ultima VII: The Black Gate *
+// JoJo's Bizarre Adventure: Heritage for the Future *
+// Star Ocean: The Second Story *
+// Commander Keen in Goodbye, Galaxy!: The Armageddon Machine *
+// Super Mario 64 *
+// Sonic the Hedgehog 3 & Knuckles *
+// Lemmings 2: The Tribes *
+// ToeJam & Earl *
+// Mass Effect Trilogy *
+// Fate/Grand Order *
+// The Cat Lady *
+// OFF *
+// Bloodborne: Game Of The Year Edition *
+// The Last of Us Remastered *
+// Pac-Man: Championship Edition DX *
+// Persona 4 Golden *
+// Metal Gear Solid 3: Subsistence *
+// Super Smash Bros. Melee *
+// Mario & Luigi: Bowser's Inside Story *
+// Batman: Arkham City - Game of the Year Edition *
+// Lisa *
+// The Witcher 3: Wild Hunt *
+// Super Mario Galaxy *
+// Mass Effect 2 *
+// Metroid Prime *
+// Metal Gear Solid: The Legacy Collection *
+// World of Warcraft: Wrath of the Lich King *
+// Grand Theft Auto V *
+// Gran Turismo 3: A-Spec *
+// Super Mario Galaxy 2 *
+// System Shock: Enhanced Edition *
+// Uncharted 2: Among Thieves *
+// The Last of Us *
+// The Witcher 3: Wild Hunt - Hearts of Stone *
+// Star Wars: Knights of the Old Republic *
+// Undertale *
+// Portal 2 *
+// The Legend of Zelda: Ocarina of Time 3D *
+// The Elder Scrolls V: Skyrim *
+// Portal: Still Alive *
+// Persona 5 Royal *
+// F1 2020 *
+// Guacamelee! Gold Edition *
+// Grand Theft Auto: San Andreas *
+// `.split('*')
+// async function Write(){
+
+//     for(let el of dummy){
+//         await getWiki(el)
+//     }
+// }
+
+// Write()
+
+module.exports = {genUser ,genGenre ,getGames,  genGames, getWiki}
