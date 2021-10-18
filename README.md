@@ -1,6 +1,11 @@
 # Welcome to GoodGames!
 
 GoodGames is a web application that allows users to view a library of video games and organize a custom selection of games into shelves. Users will also be able to view reviews of each game as well as publish their own. This project is inspired by [Goodreads](https://www.goodreads.com/), a website where individuals can search for books from an existing library, catalog books into custom shelves, and write & discuss reviews.
+
+<p align="center">
+  <img src="https://github.com/aryan151/GoodGames/blob/main/planning/images/goodgames_home.png" alt="good games home" height="300">
+</p>
+
 #### Live link: [goodgames](https://goodgames2021.herokuapp.com/)
 ***
 
@@ -46,6 +51,25 @@ GoodGames is a web application that allows users to view a library of video game
 ***
 
 ### Key Features
+- Users can add games to their default or custom shelves
+
+<p align="center">
+  <img src="https://github.com/aryan151/GoodGames/blob/main/planning/images/goodgames_addtoshelf.gif" alt="good games add game to shelf" height="300">
+</p>
+
+- Users can view their shelves and remove games from their shelves
+
+<p align="center">
+  <img src="https://github.com/aryan151/GoodGames/blob/main/planning/images/goodgames_shelves.png" alt="good games shelf page" height="300">
+  <img src="https://github.com/aryan151/GoodGames/blob/main/planning/images/goodgames_removefromshelf.png" alt="good games remove game from shelf" height="300">
+</p>
+
+- Users can search for games to add to their shelves
+
+<p align="center">
+  <img src="https://github.com/aryan151/GoodGames/blob/main/planning/images/goodgames_search.gif" alt="good games search" height="300">
+</p>
+
 - Bcryptjs library to secure authentication (w/ Demo User) to ensure user security
 - CSRUF library used to prevent csrf attacks
 - Session cookies used to authorize users when trying to view shelves and read/update their reviews
