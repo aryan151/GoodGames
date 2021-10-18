@@ -10,7 +10,7 @@ const router = express.Router();
 /* GET home page. */
 router.get('/', asyncHandler(async (req, res) => {
     const games = await Game.findAll({
-        order: [['createdAt', 'DESC']],
+        order: [['releaseDate', 'DESC']],
         limit: 10,
     })
 
