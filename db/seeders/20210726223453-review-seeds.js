@@ -64,18 +64,17 @@ const genReviews = async () =>{
 
         let reviewContent = result[gameId]
         if(reviewContent){
-        for(let text, i of reviewContent){
+        for(let text of reviewContent){
 
             let userId = parseInt(assignRandomReview(users))
             let content = text
 
             let rating =  (Math.floor(Math.random() * (5 - 1 + 1)) + 1);
 
-            if(i%2 === 0 && rating < 5){
+            if(userId%2 === 0 && rating < 5){
                 rating = rating + 1
             }
             if(content){
-
             reviews.push({userId, content, gameId :parseInt(gameId), createdAt: new Date(), updatedAt: new Date(), rating})
             }else{
             reviews.push({userId,content: faker.lorem.paragraph(), gameId :parseInt(gameId), createdAt: new Date(), updatedAt: new Date(), rating})
@@ -84,7 +83,7 @@ const genReviews = async () =>{
 
 
     }
-    console.log(reviews)
+
    return reviews
 }
 

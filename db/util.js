@@ -1,6 +1,6 @@
 const faker = require('faker')
 const { default: fetch } = require('node-fetch')
-const {clientId, clientSecret} = require('../config')
+const {clientId, token} = require('../config')
 
 
 const genUser = (genNum) => {
@@ -48,8 +48,8 @@ const genGenre = async () =>{
         method: 'post',
         headers: {
             'Accept': 'application/json',
-            'Client-ID': 'x5wure9pzry24x199i5227zgbr4w93',
-            'Authorization': 'Bearer 9jhwr3on4xv75nf7010wlpkcufytyb',
+            'Client-ID': clientId,
+            'Authorization': token,
             'Content-Type': 'text/plain'
         },
 
@@ -58,7 +58,7 @@ const genGenre = async () =>{
     })
 
     let genres = await res.json()
-
+    console.log(genres)
     genres.forEach(genre => {
         genreArr.push({
             id: genre.id,
@@ -76,8 +76,8 @@ const getGames = async () =>{
         method: 'post',
         headers: {
             'Accept': 'application/json',
-            'Client-ID': 'x5wure9pzry24x199i5227zgbr4w93',
-            'Authorization': 'Bearer 9jhwr3on4xv75nf7010wlpkcufytyb',
+            'Client-ID': clientId,
+            'Authorization': token,
             'Content-Type': 'text/plain'
         },
 
@@ -91,8 +91,8 @@ const getGames = async () =>{
         method: 'post',
         headers: {
             'Accept': 'application/json',
-            'Client-ID': 'x5wure9pzry24x199i5227zgbr4w93',
-            'Authorization': 'Bearer 9jhwr3on4xv75nf7010wlpkcufytyb',
+            'Client-ID': clientId,
+            'Authorization': token,
             'Content-Type': 'text/plain'
         },
 
@@ -105,8 +105,8 @@ const getGames = async () =>{
         method: 'post',
         headers: {
             'Accept': 'application/json',
-            'Client-ID': 'x5wure9pzry24x199i5227zgbr4w93',
-            'Authorization': 'Bearer 9jhwr3on4xv75nf7010wlpkcufytyb',
+            'Client-ID': clientId,
+            'Authorization': token,
             'Content-Type': 'text/plain'
         },
 

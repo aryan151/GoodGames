@@ -9,5 +9,5 @@ module.exports = {
         host: process.env.DB_HOST,
     },
     clientId: process.env.GAME_API_ID,
-    clientSecret: process.env.GAME_API_SECRET
+    token: process.env.TOKEN
 };
