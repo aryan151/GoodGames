@@ -9,6 +9,10 @@ ul {
     min-height: 8vh;
 }
 
+h1.about-header {
+    padding: 30px 0;
+}
+
 p {
     color: white;
     text-transform: uppercase;
@@ -22,4 +26,13 @@ li {
 
 img {
     justify-content: flex-end;
+}
+
+.contrib {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contrib a .about-icon {
+    font-size: 36px;
 }

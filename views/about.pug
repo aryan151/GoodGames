@@ -3,21 +3,39 @@ extends layout.pug
 block content
     link(rel='stylesheet' href = '/stylesheets/about.css')
     main
-      h1
+      h1.about-header
         | Contact Us Here
       ul
         li
-          #contrib
-            a(href='https://github.com/CamChandler98')
-              img(src='https://img.icons8.com/material-sharp/40/ffffff/github.png')
-            p Cam Chandler
+          .contrib
+            a(href='https://github.com/CamChandler98' target='blank')
+                i.fab.fa-github.about-icon
+            a(href='https://www.linkedin.com/in/cameron-chandler-dev/' target='blank')
+                i.fab.fa-linkedin-in.about-icon
+            a(href='https://angel.co/u/cameron-chandler' target='blank')
+                i.fab.fa-angellist.about-icon
+            a(href='https://camchandler98.github.io/' target='blank')
+                i.fas.fa-user-circle.about-icon
+          p Cam Chandler
         li
-          #contrib
-            a(href='https://github.com/verykenny')
-              img(src='https://img.icons8.com/material-sharp/40/ffffff/github.png')
-            p Kenneth Donahue
+          .contrib
+            a(href='https://github.com/verykenny' target='blank')
+                i.fab.fa-github.about-icon
+            a(href='https://www.linkedin.com/in/kenneth-donahue/' target='blank')
+                i.fab.fa-linkedin-in.about-icon
+            a(href='https://angel.co/u/kenneth-donahue-1' target='blank')
+                i.fab.fa-angellist.about-icon
+            a(href='https://www.kennethdonahue.com' target='blank')
+                i.fas.fa-user-circle.about-icon
+          p Kenneth Donahue
         li
-          #contrib
-            a(href='https://github.com/aryan151')
-              img(src='https://img.icons8.com/material-sharp/40/ffffff/github.png')
+          .contrib
+            a(href='https://github.com/aryan151' target='blank')
+                i.fab.fa-github.about-icon
+            a(href='#' target='blank')
+                i.fab.fa-linkedin-in.about-icon
+            a(href='#' target='blank')
+                i.fab.fa-angellist.about-icon
+            a(href='h#' target='blank')
+                i.fas.fa-user-circle.about-icon
           p Aryan Attul
