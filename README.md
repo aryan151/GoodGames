@@ -5,6 +5,8 @@ GoodGames is a web application that allows users to view a library of video game
 ***
 
 ### Index
+[Development](#development)
+
 [Technologies](#technologies)
 
 [Key Features](#key-features)
@@ -16,6 +18,14 @@ GoodGames is a web application that allows users to view a library of video game
 [Future Goals](#future-goals)
 
 ***
+
+### Development
+* You can read more about the project using the wiki located at: https://github.com/aryan151/GoodGames/wiki
+* To start a development environment:
+    1. Clone the repository at: https://github.com/aryan151/GoodGames
+    2. Run the command "npm install" from the root project directory in your terminal to install dependencies
+    5. Run the command "npm start" from the react-app directory to start the express server.
+    6. Navigate to the localhost port specified in config/index.js
 
 ### Technologies
 #### Front End
