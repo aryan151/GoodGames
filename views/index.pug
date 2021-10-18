@@ -12,7 +12,10 @@ block content
             div.inner-container
                 a(href=`/games/${game.id}`): h2.card-title= game.title
                 p= game.description
-                h5 Rating: #{game.avg}
+                if (game.avg > 0)
+                    h5 Rating: #{game.avg}
+                else
+                    h5 Rating: No rating available
                 form.get-shelves(action="/api/shelves", method="post")
                     input(type="hidden", name="gameId", value=game.id)
 

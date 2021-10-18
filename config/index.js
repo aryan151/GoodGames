@@ -8,4 +8,6 @@ module.exports = {
         database: process.env.DB_DATABASE,
         host: process.env.DB_HOST,
     },
+    clientId: process.env.GAME_API_ID,
+    token: process.env.TOKEN
 };

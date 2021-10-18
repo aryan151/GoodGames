@@ -3,15 +3,18 @@ const express = require('express');
 const { Op } = require('sequelize');
 
 const { asyncHandler } = require('./utils');
-const { Game, Review, User } = require('../db/models');
+const { Game, Review, User , Genre } = require('../db/models');
 const { reviewValidators, jsonValidationHandler } = require('./validators');
 const sequelize = require('sequelize');
 
 
 const router = express.Router();
 
+
+
+
 router.get('/games', asyncHandler(async (req, res) => {
-    const games = await Game.findAll();
+    const games = await Game.findAll({include: {model: Genre}});
 
     games.forEach(game => {
 
@@ -21,7 +24,7 @@ router.get('/games', asyncHandler(async (req, res) => {
         getDate(game)
         game.avg = await getAvgRating(game)
     }
-
+    // res.json(games)
     res.render('games', { title: 'Games', games })
 }))
 
@@ -82,7 +85,10 @@ router.post('/games/:gameId(\\d+)/delete', asyncHandler(async (req, res) => {
 
 
 const getDate = (game) => {
+    console.log('original',game.releaseDate)
     const date = new Date(game.releaseDate);
+    console.log('New' , date)
+
     const month = date.getMonth();
     const day = date.getDay() + 1
     const year = date.getFullYear();
