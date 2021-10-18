@@ -34,6 +34,9 @@ GoodGames is a web application that allows users to view a library of video game
 ***
 ### Technologies
 #### Front End
+
+The front end of this app renders HTML on the client using the Pug templating engine to compile the HTML and render data provided by the backend and third-party APIs.
+
 - JavaScript
 - HTML (rendered via Pug)
 - CSS styling
@@ -41,6 +44,9 @@ GoodGames is a web application that allows users to view a library of video game
 - Heroku (Hosting)
 
 #### Back End
+
+Express is the workhorse of this application, serving up Pug templates to the client as well as querying the PostgreSQL database, providing those data and templates via a RESTful API, and handling user authentication.
+
 - Express.js
 - PostgreSQL (Database)
 - Sequelize.js
