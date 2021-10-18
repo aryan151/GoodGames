@@ -47,6 +47,8 @@ GoodGames is a web application that allows users to view a library of video game
 - AJAX
 - Express Validator Library
 - CSURF Library
+- IGDB API
+- MediaWiki API
 
 ***
 
@@ -75,6 +77,8 @@ GoodGames is a web application that allows users to view a library of video game
 - Session cookies used to authorize users when trying to view shelves and read/update their reviews
 - Logged in users can create own reviews, store games in shelves and add their own shelves.
 - AJAX is used to asynchronously render elements (e.g. adding a review, presenting list of shelves)
+- IGDB API is used to seed games into the database
+- MediaWiki API is used to seed reviews by querying wikipedia and scraping snippets realated to each game.
 
 ***
 
