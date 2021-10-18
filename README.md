@@ -26,7 +26,7 @@ GoodGames is a web application that allows users to view a library of video game
     2. Run the command "npm install" from the root project directory in your terminal to install dependencies
     5. Run the command "npm start" from the react-app directory to start the express server.
     6. Navigate to the localhost port specified in config/index.js
-
+***
 ### Technologies
 #### Front End
 - JavaScript
