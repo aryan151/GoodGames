@@ -3,6 +3,8 @@
     padding: 0px;
     box-sizing: border-box;
     background-color: #a44200;
+    display: flex;
+    justify-content: center;
 }
 
 body {
@@ -15,7 +17,8 @@ nav {
 	align-items: center;
 	min-height: 8vh;
 	padding: 5px;
-    max-width: 900px;
+    width: 100%;
+    max-width: 1080px;
 }
 
 .logo {
