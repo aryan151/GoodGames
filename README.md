@@ -53,6 +53,7 @@ Express is the workhorse of this application, serving up Pug templates to the cl
 - AJAX
 - Express Validator Library
 - CSURF Library
+- Faker Library
 - IGDB API
 - MediaWiki API
 
@@ -78,12 +79,13 @@ Express is the workhorse of this application, serving up Pug templates to the cl
   <img src="https://github.com/aryan151/GoodGames/blob/main/planning/images/goodgames_search.gif" alt="good games search" height="300">
 </p>
 
-- Bcryptjs library to secure authentication (w/ Demo User) to ensure user security
-- CSRUF library used to prevent csrf attacks
-- Session cookies used to authorize users when trying to view shelves and read/update their reviews
+- Bcryptjs library to secure authentication (w/ Demo User) to ensure user security.
+- CSRUF library used to prevent csrf attacks.
+- Session cookies used to authorize users when trying to view shelves and read/update their reviews.
 - Logged in users can create own reviews, store games in shelves and add their own shelves.
-- AJAX is used to asynchronously render elements (e.g. adding a review, presenting list of shelves)
-- IGDB API is used to seed games into the database
+- AJAX is used to asynchronously render elements (e.g. adding a review, presenting list of shelves).
+- Faker is used to seed sake user information, including usernames and emails.
+- IGDB API is used to seed games into the database.
 - MediaWiki API is used to seed reviews by querying wikipedia and scraping snippets realated to each game.
 
 ***
