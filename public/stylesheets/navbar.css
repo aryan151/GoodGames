@@ -116,7 +116,7 @@ a:hover {
 }
 
 /* Morph Navbar when screen is smaller size */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 950px) {
 	body {
 		overflow-x: hidden;
 	}
