@@ -2,22 +2,30 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    background-color: #a44200;
+    display: flex;
+    justify-content: center;
 }
+
 body {
     background-color: #060919;
 }
+
 nav {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	min-height: 8vh;
-	background-color: #a44200;
+	height: 75px;
 	padding: 5px;
+    width: 100%;
+    max-width: 1080px;
 }
-.logo{
+
+.logo {
 	display: flex;
 	align-self: center;
 }
+
 .logo > a {
 	color: white;
 	text-transform: uppercase;
@@ -29,20 +37,19 @@ nav {
 
 .logoList {
 	display: flex;
-	justify-content: right;
-	padding: 10px 30px;
-	width: 40%;
 }
 
 .navlist {
 	display: flex;
-	justify-content: space-around;
-	width: 40%;
+	justify-content: space-between;
 }
+
 .navlist li{
 	list-style: none;
 	color: #fff;
+    padding-left: 20px;
 }
+
 a {
 	text-decoration: none;
 	color: white;
@@ -109,23 +116,24 @@ a:hover {
 }
 
 /* Morph Navbar when screen is smaller size */
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 950px) {
 	body {
 		overflow-x: hidden;
 	}
 	.navlist {
 		position: absolute;
 		right: 0px;
-		height: 50vh;
-		top: 25vh;
+		height: 250px;
+		top: 75px;
 		background-color: #a44200;
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		width: 50%;
+		width: 350px;
 		transform: translateX(100%);
 		transition: transform 0.5s ease-in;
 		z-index: 1;
+        justify-content: space-around;
 	}
 	.small {
 		display: flex;
