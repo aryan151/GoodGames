@@ -15,7 +15,7 @@ nav {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	min-height: 8vh;
+	height: 75px;
 	padding: 5px;
     width: 100%;
     max-width: 1080px;
@@ -116,23 +116,24 @@ a:hover {
 }
 
 /* Morph Navbar when screen is smaller size */
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 900px) {
 	body {
 		overflow-x: hidden;
 	}
 	.navlist {
 		position: absolute;
 		right: 0px;
-		height: 50vh;
-		top: 25vh;
+		height: 250px;
+		top: 75px;
 		background-color: #a44200;
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		width: 50%;
+		width: 350px;
 		transform: translateX(100%);
 		transition: transform 0.5s ease-in;
 		z-index: 1;
+        justify-content: space-around;
 	}
 	.small {
 		display: flex;
